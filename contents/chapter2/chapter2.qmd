@@ -1,0 +1,7 @@
+---
+bibliography: chapter2.bib
+---
+
+# Transfer Characteristic of the Common-Source Voltage Amplifier {#sec-dl_primer}
+
+[@rosenblatt1957perceptron], followed by the invention of backpropagation algorithms in the 1980s [@rumelhart1986learning].
