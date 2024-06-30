@@ -1,0 +1,9 @@
+---
+comments: false
+---
+
+# Contributors {.unnumbered}
+
+Original book authored by Boris Murmann with 
+Series Editors Roger T. Howe and Charles G. Sodini.
+Chapter 1 ported to Quarto by James T. Meech.
