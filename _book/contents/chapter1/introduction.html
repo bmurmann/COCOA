@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Introduction – Analysis and Design of Elementary MOS Amplifier Stages</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../contents/chapter2/chapter2.html" rel="next">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "~",
+    "/"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
+</script>
+<script src="../../scripts/welcome/confetti.js" defer=""></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
+<script src="../../scripts/ai_menu/dist/bundle.js" defer=""></script>
+<script src="../../scripts/ai_menu/dist/142.bundle.js" defer=""></script>
+<script src="../../scripts/ai_menu/dist/384.bundle.js" defer=""></script>
+<script src="../../scripts/ai_menu/dist/761.bundle.js" defer=""></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Analysis and Design of Elementary MOS Amplifier Stages</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="https://github.com/harvard-edge/cs249r_book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../../Analysis-and-Design-of-Elementary-MOS-Amplifier-Stages.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/chapter1/introduction.html">MAIN</a></li><li class="breadcrumb-item"><a href="../../contents/chapter1/introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">FRONT MATTER</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/contributors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements and License Information</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">MAIN</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/chapter1/introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/chapter2/chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transfer Characteristic of the Common-Source Voltage Amplifier</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">REFERENCES</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#mixed-signal-integrated-circuits" id="toc-mixed-signal-integrated-circuits" class="nav-link active" data-scroll-target="#mixed-signal-integrated-circuits"><span class="header-section-number">1.1</span> Mixed-Signal Integrated Circuits</a>
+  <ul>
+  <li><a href="#example-single-chip-radio" id="toc-example-single-chip-radio" class="nav-link" data-scroll-target="#example-single-chip-radio"><span class="header-section-number">1.1.1</span> Example: Single-Chip Radio</a></li>
+  <li><a href="#example-photodiode-interface-circuit" id="toc-example-photodiode-interface-circuit" class="nav-link" data-scroll-target="#example-photodiode-interface-circuit"><span class="header-section-number">1.1.2</span> Example: Photodiode Interface Circuit</a></li>
+  </ul></li>
+  <li><a href="#managing-complexity" id="toc-managing-complexity" class="nav-link" data-scroll-target="#managing-complexity"><span class="header-section-number">1.2</span> Managing Complexity</a></li>
+  <li><a href="#two-port-abstraction-for-amplifiers" id="toc-two-port-abstraction-for-amplifiers" class="nav-link" data-scroll-target="#two-port-abstraction-for-amplifiers"><span class="header-section-number">1.3</span> Two-Port Abstraction for Amplifiers</a>
+  <ul>
+  <li><a href="#amplifier-types" id="toc-amplifier-types" class="nav-link" data-scroll-target="#amplifier-types"><span class="header-section-number">1.3.1</span> Amplifier Types</a></li>
+  <li><a href="#unilateral-versus-bilateral-two-ports" id="toc-unilateral-versus-bilateral-two-ports" class="nav-link" data-scroll-target="#unilateral-versus-bilateral-two-ports"><span class="header-section-number">1.3.2</span> Unilateral versus Bilateral Two-Ports</a></li>
+  <li><a href="#construction-of-unilateral-two-port-models" id="toc-construction-of-unilateral-two-port-models" class="nav-link" data-scroll-target="#construction-of-unilateral-two-port-models"><span class="header-section-number">1.3.3</span> Construction of Unilateral Two-Port Models</a></li>
+  </ul></li>
+  <li><a href="#integrated-circuit-design-versus-printed-circuit-board-design" id="toc-integrated-circuit-design-versus-printed-circuit-board-design" class="nav-link" data-scroll-target="#integrated-circuit-design-versus-printed-circuit-board-design"><span class="header-section-number">1.4</span> Integrated Circuit Design versus Printed Circuit Board Design</a></li>
+  <li><a href="#prerequisites-and-advanced-material" id="toc-prerequisites-and-advanced-material" class="nav-link" data-scroll-target="#prerequisites-and-advanced-material"><span class="header-section-number">1.5</span> Prerequisites and Advanced Material</a></li>
+  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation"><span class="header-section-number">1.6</span> Notation</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2</span> Summary</a></li>
+  <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">3</span> Problems</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/harvard-edge/cs249r_book/edit/dev/contents/chapter1/introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/blob/dev/contents/chapter1/introduction.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/chapter1/introduction.html">MAIN</a></li><li class="breadcrumb-item"><a href="../../contents/chapter1/introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-introduction" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>With the development of the integrated circuit, the semiconductor industry is undoubtedly the most influential industry to appear in our society. Its impact on almost every person in the world exceeds that of any other industry since the beginning of the Industrial Revolution. The reasons for its success are as follows:</p>
+<ul>
+<li><p>Exponential growth of the number of functions on a single integrated circuit.</p></li>
+<li><p>Exponential reduction in the cost per function.</p></li>
+<li><p>Exponential growth in sales (economic importance) for approximately forty years.</p></li>
+</ul>
+<p>This growth has led to ever-increasing performance at lower prices for consumer electronics such as cellular phones, personal computers, audio players, etc. The computational power available to the individual has increased to the point that it has changed the way we think about problem solving. Communication technology including wired and wireless networks have fundamentally changed the way we live and communicate.</p>
+<p>The innovation responsible for these impressive results is the integration of electronic circuit components fabricated in silicon <strong>integrated circuit</strong> (IC) technology. Today, many of the ICs shaping new applications contain both analog and digital circuitry, and are therefore called mixed-signal integrated circuits. In mixed-signal ICs, the analog circuitry is typically responsible for interfacing with physical signals, and concerned for example with the amplification of a weak signal from an antenna, or driving a sound signal into a loudspeaker. On the other hand, digital circuitry is primarily used for computing, enabling powerful functions such as Fast Fourier Transforms or floating point multiplication.</p>
+<p>This module was written as an introduction to the analysis and design of analog integrated circuits in <strong>complementary metal-oxide-semiconductor</strong> (CMOS) technology. In this first chapter, we will motivate this subject by looking at an example of a mixed-signal IC and by highlighting the need for a systematic study of the fundamental principles and proper engineering approximations in analog design.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chapter Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Provide a motivation for the study of elementary analog integrated circuits.</p></li>
+<li><p>Provide a roadmap for the subjects that will be covered throughout this module.</p></li>
+<li><p>Review fundamental concepts for the construction of two-port circuit models.</p></li>
+</ul>
+</div>
+</div>
+<div id="fig-1.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Block diagram of a mixed-signal system.
+</figcaption>
+</figure>
+</div>
+<section id="mixed-signal-integrated-circuits" class="level2 page-columns page-full" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="mixed-signal-integrated-circuits"><span class="header-section-number">1.1</span> Mixed-Signal Integrated Circuits</h2>
+<p><a href="#fig-1.1" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> shows a generic diagram of a mixed-signal system, incorporating a mixed-signal integrated circuit. To the left of this diagram are the transducers and media that represent the sources and sinks of the information processed by the system. Examples of input transducers include microphones or photodiodes used to receive communication signals from an optical fiber. Likewise, the output of the system may drive an antenna for radio-frequency communication or a mechanical actuator that controls the zoom of a digital camera. At the boundary between the media and transducers are typically signal conditioning circuits that translate the incoming and outgoing signals to the proper signal strength and physical format. For instance, an amplifier is usually needed to increase the strength of the receive signal from a radio antenna, so that it can be more easily processed by the subsequent system components. In most systems, the signal conditioning circuitry interfaces to analog-to-digital and digital-to-analog converters, which provide the link between analog quantities and their digital representation in the computing back-end of the system.</p>
+<section id="example-single-chip-radio" class="level3 page-columns page-full" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="example-single-chip-radio"><span class="header-section-number">1.1.1</span> Example: Single-Chip Radio</h3>
+<p>The block diagram of a modern mixed-signal integrated circuit is shown in <a href="#fig-1.2" class="quarto-xref">Figure&nbsp;<span>1.2</span></a> (see <span class="citation" data-cites="staszewski200824mm">(<a href="../../references.html#ref-staszewski200824mm" role="doc-biblioref">Staszewski et al. 2008</a>)</span>). This design incorporates most of the circuitry needed to realize a modern cellular phone. For instance, it contains a front-end low-noise amplifier (LNA) to condition the incoming antenna signal. The amplified signal is subsequently frequency shifted, converted into digital format and fed into a digital processor. Even though the block diagram in <a href="#fig-1.2" class="quarto-xref">Figure&nbsp;<span>1.2</span></a> looks quite complex, all of its elements can be mapped into one of the blocks of the generic diagram of <a href="#fig-1.1" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>.</p>
+<div class="no-row-height column-margin column-container"></div><div id="fig-1.2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-1.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.2.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.2: Block diagram of a single-chip radio (<span class="citation" data-cites="staszewski200824mm">(<a href="../../references.html#ref-staszewski200824mm" role="doc-biblioref">Staszewski et al. 2008</a>)</span>).
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p><a href="#fig-1.3" class="quarto-xref">Figure&nbsp;<span>1.3</span></a> shows the chip photo of the single-chip radio, with some of the system’s key building blocks annotated. As evident from this diagram, the digital logic dominates the area of this particular IC. This situation is not uncommon in modern mixed-signal ICs, not least because the utilized digital algorithms have reached an enormous complexity, requiring millions or tens of millions of logic gates.</p>
+<div id="fig-1.3" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-1.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.3.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.3: Chip photo of a single-chip radio (<span class="citation" data-cites="staszewski200824mm">(<a href="../../references.html#ref-staszewski200824mm" role="doc-biblioref">Staszewski et al. 2008</a>)</span>).
+</figcaption>
+<div class="no-row-height column-margin column-container"><div id="ref-staszewski200824mm" class="csl-entry" role="listitem">
+Staszewski, Robert Bogdan, Dirk Leipold, O Eliezer, Mitch Entezari, Khurram Muhammad, Imran Bashir, C-M Hung, et al. 2008. <span>“A 24mm 2 Quad-Band Single-Chip GSM Radio with Transmitter Calibration in 90nm Digital CMOS.”</span> In <em>2008 IEEE International Solid-State Circuits Conference-Digest of Technical Papers</em>, 208–607. IEEE.
+</div></div></figure>
+</div>
+<p>Despite the dominance of digital logic within most systems, the analog interface components are equally important, as they determine how and how much information can be communicated between the physical world and the digital processing backbone. In many cases, the performance of the signal conditioning and data conversion circuitry ultimately determines the performance of the overall system.</p>
+</section>
+<section id="example-photodiode-interface-circuit" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="example-photodiode-interface-circuit"><span class="header-section-number">1.1.2</span> Example: Photodiode Interface Circuit</h3>
+<p><a href="#fig-1.4" class="quarto-xref">Figure&nbsp;<span>1.4</span></a> shows an example of a signal conditioning circuit that plays a critical role in fiber-optic communication systems. In such a system, a photodiode is used to convert light intensity to electrical current (<span class="math inline">\(i_{IN}\)</span>). In order to condition the signal for further processing, the diode current is converted into a voltage (<span class="math inline">\(v_{OUT}\)</span>) by a so-called <strong>transimpedance amplifier</strong>. This amplifier must be fast enough to process the incoming light pulses, which often occur at frequencies of multiple gigahertz. In addition, the amplifier must obey certain limits on power dissipation, or the system may become impractical in terms of heat management or power supply requirements.</p>
+<div id="fig-1.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.4.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.4: Photodetector circuit for fiber-optic communication.
+</figcaption>
+</figure>
+</div>
+<p>Limitations in speed and power dissipation are, in general, among the main concerns in the interface circuitry of mixed-signal systems. Since new products tend to demand higher performance, the analog designer is constantly concerned with the design and optimization of system-critical building blocks, aiming for the best possible performance that can be achieved within the framework of the target application and process technology.</p>
+<p>A specific example for the circuit realization of a transimpedance amplifier is shown in <a href="#fig-1.5" class="quarto-xref">Figure&nbsp;<span>1.5</span></a>. It consists of three transistor stages, each of which serves a specific purpose and design intent. This is true for most amplifier circuits; even though the full schematic of a particular realization may be com- plex, it can usually be broken up into smaller sub-blocks that are more easily understood. Specifi- cally, for the amplifier of <a href="#fig-1.5" class="quarto-xref">Figure&nbsp;<span>1.5</span></a>, the experienced designer will recognize that the circuit consists of a cascade connection of a <strong>common-gate</strong>, <strong>common-source</strong>, and <strong>common-drain</strong> stage. These sub-blocks form the basis for a large number of analog circuits, and can be viewed as the “atoms” or fundamental building blocks of analog design. In this module, you will learn to analyze these blocks from first principles, and to reuse the gained knowledge for the design of more complex circuits. The circuit of <a href="#fig-1.5" class="quarto-xref">Figure&nbsp;<span>1.5</span></a> will be analyzed in detail in Chapter 6 of this module, building upon the principles covered in Chapters 2–5.</p>
+</section>
+</section>
+<section id="managing-complexity" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="managing-complexity"><span class="header-section-number">1.2</span> Managing Complexity</h2>
+<p>As evident from the example of Section 1-1-1, modern integrated circuits are highly complex and require a hierarchical approach in design and analysis. That is, a modern integrated circuit is far too complex to be fully understood and analyzed in a single sheet schematic at the transistor level. Typically, a mixed-signal IC is represented by a block diagram as the one shown in <a href="#fig-1.2" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>. At the level of this description, suitable specifications are derived for each block, which may itself contain several sub-blocks. The blocks and sub-blocks are then designed and optimized until they meet the desired target specifications.</p>
+<div id="fig-1.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.5.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.5: Example realization of a transimpedance amplifier.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-1.6" class="quarto-xref">Figure&nbsp;<span>1.6</span></a> illustrates examples of the various levels of abstraction that come into play in the design of a modern integrated circuit. At the highest level, the constituent elements can be partitioned into analog and digital blocks. An example of a high-level analog block is an analog-to-digital converter, whereas a microprocessor is an example of a large digital block. These blocks themselves contain smaller functional units, as, for example, operational amplifiers in the case of an analog-to-digital converter. The operational amplifiers themselves contain the aforementioned elementary transistor stages, which are the main subject of this module.</p>
+<div id="fig-1.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.6.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.6: Levels of abstraction in integrated circuit design.
+</figcaption>
+</figure>
+</div>
+<p>Interestingly, even at the level of elementary transistor stages, is often not possible to work with a perfect model or description of the circuit. This is particularly so because the physical effects in the constituent transistors are highly complex and often impossible to capture perfectly with a tractable set of equations for hand analysis. Therefore, making proper engineering approximations in transistor modeling is an important aspect in maintaining a systematic design methodology. For this particular reason, the presentation in this module follows a “just-in-time” approach for the modeling of transistor behavior. Rather than deriving a complete transistor model in an isolated chapter (as done in most texts), we begin with only the basic device properties and increase complexity throughout the module upon demand, and where needed to gain further insight and accuracy. With this approach, the reader learns to appreciate the complexity of a refined model, and will be able to assess and track potential limitations of working with simplified models.</p>
+<div id="fig-1.7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.7.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.7: Two-port model of the transimpedance amplifier circuit in <a href="#fig-1.5" class="quarto-xref">Figure&nbsp;<span>1.5</span></a>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="two-port-abstraction-for-amplifiers" class="level2 page-columns page-full" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="two-port-abstraction-for-amplifiers"><span class="header-section-number">1.3</span> Two-Port Abstraction for Amplifiers</h2>
+<p>High-level system block diagrams, such as <a href="#fig-1.2" class="quarto-xref">Figure&nbsp;<span>1.2</span></a> , are typically drawn as unidirectional flowcharts and do not capture details about the electrical behavior of each connection port and how certain blocks may interact once they are connected. Unfortunately, electrical signals are not unidirectional, and connecting two blocks always means that there is some level of interaction through the voltages and currents at the connection points.</p>
+<div id="fig-1.8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.8.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.8: General amplifier two-port.
+</figcaption>
+</figure>
+</div>
+<p>The commonly used linear two-port modeling abstraction for amplifiers and amplifier stages allows the designer to take these effects into account while maintaining a high level of abstraction. For instance, the circuit of <a href="#fig-1.5" class="quarto-xref">Figure&nbsp;<span>1.5</span></a> can be approximately modeled as shown in <a href="#fig-1.7" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> (the details on obtaining this model are discussed later in this module). Each stage of the overall amplifier is represented via a simplified circuit model that captures its essential features. Once this model is created, the interaction among stages can be analyzed at this high level of abstraction, without requiring detailed insight on how each stage is implemented. The two-port modeling approach is particularly useful in the design of amplifiers, as it can help shape the thought process on how the various stages should be configured to optimize performance. In the following subsections, we will review some of the basic concepts of amplifier two-port modeling used in this module.</p>
+<section id="amplifier-types" class="level3 page-columns page-full" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="amplifier-types"><span class="header-section-number">1.3.1</span> Amplifier Types</h3>
+<p>In this module, we model amplifier circuits as blocks that have an input and output port, where the term “port” refers to a pair of terminals. For each port, we can define input and output currents and voltages as shown in <a href="#fig-1.8" class="quarto-xref">Figure&nbsp;<span>1.8</span></a>. Depending on the intended function, we distinguish between the four possible amplifier types listed in Table 1-1. For example, an amplifier that takes an input current and amplifies this current to produce a proportional output voltage is called a transresistance amplifier. In this context, it is important to emphasize that in a general practical amplifier circuit, the input and output ports will always carry both nonzero voltages and currents, and there exist transfer functions between all possible combinations of input/output variables. What truly defines the type of an amplifier is what the circuit designer deems as the main quantities of interest in the amplifier’s application.</p>
+<table class="caption-top table">
+<caption>Amplifier types.</caption>
+<colgroup>
+<col style="width: 39%">
+<col style="width: 28%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Amplfier Type</strong></th>
+<th><strong>Input Quantity</strong></th>
+<th><strong>Output Quantity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Voltage Amplifier</td>
+<td>Voltage</td>
+<td>Voltage</td>
+</tr>
+<tr class="even">
+<td>Current Amplifier</td>
+<td>Current</td>
+<td>Current</td>
+</tr>
+<tr class="odd">
+<td>Transconductance Amplifier</td>
+<td>Voltage</td>
+<td>Current</td>
+</tr>
+<tr class="even">
+<td>Transresistance Amplifier</td>
+<td>Current</td>
+<td>Voltage</td>
+</tr>
+</tbody>
+</table>
+<p>Now, in order to model the inner workings of each amplifier type, we can invoke the four corresponding two-port amplifier models shown in <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>. Each amplifier model has an input and output resistance (or more generally, a frequency dependent impedance) and a controlled source to model the amplification.</p>
+<ul>
+<li><p>In the <strong>voltage amplifier model</strong>, the controlled source is a voltage-controlled voltage source. Ideally, the input resistance is infinite (open circuit, no current flow). The ideal output resistance is zero (ideal voltage source).</p></li>
+<li><p>The <strong>current amplifier model</strong> has a current-controlled current source. Ideally, the input resistance is zero (short circuit, no voltage across the input port) and the output resistance is infinite (ideal current source).</p></li>
+<li><p>The <strong>transconductance amplifier model</strong> has a voltage-controlled current source. Ideally, the input resistance is infinite (open circuit, no current flow). The ideal output resistance is also infinite (ideal current source).</p></li>
+<li><p>The <strong>transresistance or transimpedance<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> amplifier model</strong> has a current-controlled voltage source. Ideally, the input resistance is zero (short circuit, no voltage across the input port). The ideal output resistance is also zero (ideal voltage source).</p></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;The term transimpedance is sometimes used to refer to an amplifier that is primarily meant to realize a transresistance. Referring to “impedance” highlights the fact that the transfer function will usually be frequency-dependent.</p></div></div><p>From these four models and their ideal behavior, we note that the two-ports containing a voltage-controlled source should ideally have large input resistance (<span class="math inline">\(R_{in}\)</span>). This minimizes the signal loss due to resistive voltage division between the source voltage (<span class="math inline">\(v_s\)</span>) and the control voltage (<span class="math inline">\(v_{in}\)</span>). In contrast, the two-ports that use a current-controlled source should have small input resistance to minimize the signal loss due to current division between the source current (<span class="math inline">\(i_s\)</span>) and the control current (<span class="math inline">\(i_{in}\)</span>). In this context, “large” and “small” refer to the value of <span class="math inline">\(R_{in}\)</span> relative to the source resistance (<span class="math inline">\(R_s\)</span>).</p>
+<div id="fig-1.9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.9: Two-port amplifier models with input source and load: (a) voltage amplifier, (b) current amplifier, (c) transconductance amplifier, and (d) transresistance amplifier.
+</figcaption>
+</figure>
+</div>
+<p>On the output side, if the variable of interest is a voltage, the output resistance (<span class="math inline">\(R_{out}\)</span>) should be small so that only a small amount of the amplified voltage is lost through the division with the load (<span class="math inline">\(R_L\)</span>). Conversely, for a current output, the output resistance should be large to minimize current division losses. Again, “large” and “small” are taken as relative measures comparing Rout to <span class="math inline">\(R_L\)</span>.</p>
+<p>Consider for example the voltage amplifier of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(a). To calculate the transfer function of the overall circuit (<span class="math inline">\(v_{out}\)</span>/<span class="math inline">\(v_s\)</span>), the input voltage, including its source resistance, is connected to the input of the two-port model and the load resistance is connected to the output. The full circuit is shown in <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a>.</p>
+<div id="fig-1.10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.10.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.10: Voltage amplifier with connected source and load resistances.
+</figcaption>
+</figure>
+</div>
+<p>Applying the voltage divider rule at the input and output of the circuit gives</p>
+<p><span id="eq-1.1"><span class="math display">\[
+\frac{v_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot A_v \cdot \Bigl(\frac{v_{out}}{v_x}\Bigr) = \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot A_v \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+\tag{1.1}\]</span></span></p>
+<p>As we can see from this expression, the overall voltage gain is maximized when the amplifier has a large input resistance (relative to <span class="math inline">\(R_s\)</span>) and a small output resistance (relative to <span class="math inline">\(R_L\)</span>). For the ideal case of infinite input resistance and zero output resistance, <span class="math inline">\(v_{out}\)</span>/<span class="math inline">\(v_s\)</span> becomes equal to <span class="math inline">\(A_v\)</span>.</p>
+<p>For the sake of compact notation, we will often want to use a symbol for the overall circuit gain. The notation used in this module uses primed variables to distinguish between the gain of the controlled source and the gain of the overall amplifier circuit. For example, for the above-discussed voltage amplifier we define <span class="math inline">\(A'_v\)</span> = <span class="math inline">\(v_{out}\)</span> ⁄ <span class="math inline">\(v_s\)</span>. This notation is meant to emphasize the connection between the two symbols. <span class="math inline">\(A'_v\)</span> is usually smaller than <span class="math inline">\(A_v\)</span>, but can approach <span class="math inline">\(A_v\)</span> for ideal source and load configurations.</p>
+<p><strong>Example 1-1: Transfer Function Transconductance Amplifier.</strong></p>
+<p>For the transconductance amplifier circuit in <a href="#fig-ex-1.1" class="quarto-xref">Figure&nbsp;<span>1.11</span></a>, calculate the overall transconductance <span class="math inline">\(G'_m = i_{out} ⁄ v_s\)</span>.</p>
+<div id="fig-ex-1.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-1.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-1.1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.11: <strong>Figure Ex 1-1</strong>
+</figcaption>
+</figure>
+</div>
+<p><strong>SOLUTION</strong></p>
+<p>Applying the voltage divider rule at the input and the current divider rule at the output yields the following result:</p>
+<p><span class="math display">\[
+G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{i_{out}}{i_x}\Bigr) =  \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+\]</span></p>
+<p>Thus, the overall transconductance gain is maximized when the amplifier has a large input resistance (relative to <span class="math inline">\(R_s\)</span>) and a large output resistance (relative to <span class="math inline">\(R_L\)</span>). For the ideal case of infinite input and output resistances, <span class="math inline">\(G'_m\)</span> becomes equal to <span class="math inline">\(G_m\)</span>.</p>
+<p>As a final remark for this sub-section, it is important to recognize that all of the models in <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a> can be used interchangeability to describe the exact same electrical behavior (see Problem P1-1). For instance, a voltage amplifier model can be converted into a transconductance amplifier model by applying a Thevénin to Norton transformation for the controlled source.</p>
+<p>A corollary to this equivalence is that we can for example use a transconductance amplifier model to describe a voltage amplifier circuit. This is illustrated through the circuit of <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a>, which is electrically equivalent to that of <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a> (see Problem P1-2). Note that the output is taken as the voltage across the output port instead of the output current; this indicates that the circuit is viewed as a voltage amplifier. Just as in the original circuit of <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a>, we require a large input resistance and small output resistance for this circuit to maximize the overall voltage gain.</p>
+<p>The choice of amplifier model depends on several factors. At first glance, it seems natural to model each amplifier type using its “native” model that directly corresponds to the intended function. For example, we could always describe a voltage amplifier using the corresponding voltage amplifier model that contains a voltage controlled voltage source. However, as we shall see throughout this module, it is sometimes more convenient to align the amplifier model with the physical amplification mechanism or a structural feature of the underlying transistor circuit. For instance, the common-source voltage amplifier discussed in Chapter 2 naturally invokes a transconductance-based model due to the physical model of the employed transistor.</p>
+</section>
+<section id="unilateral-versus-bilateral-two-ports" class="level3 page-columns page-full" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="unilateral-versus-bilateral-two-ports"><span class="header-section-number">1.3.2</span> Unilateral versus Bilateral Two-Ports</h3>
+<p>All of the two-port models shown in <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a> are called <strong>unilateral</strong>, because they can only propagate a signal from the input port to the output port and not the other way around. For instance, injecting a current into the output port of the current amplifier of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(b) will not induce a current at the input port. Unfortunately, many practical transistor circuits are not unilateral, and exhibit <strong>bilateral</strong> behavior when analyzed in detail, and especially at high frequencies.</p>
+<div id="fig-1.11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.11.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.12: Voltage amplifier with an underlying transconductance amplifier model
+</figcaption>
+</figure>
+</div>
+<div id="fig-1.12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.12.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.13: (a) Example of a bilateral current amplifier. (b) Corresponding bilateral current amplifier two-port model.
+</figcaption>
+</figure>
+</div>
+<p>An example of a bilateral current amplifier is shown <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(a). Note that in this circuit, resistor <span class="math inline">\(R_2\)</span> couples the input and output networks and it can therefore transfer currents in both directions. Consequently, the unilateral model of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(b) cannot perfectly represent this circuit. When it is desired to capture the bilateral behavior, the two-port model in <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(b) could be employed in principle. Here, the controlled source Air models the reverse current transfer from the output back to the input. Alternatively, one could employ other bilateral and more general two-port models based on admittance parameters (<span class="math inline">\(Y\)</span>), impedance parameters (<span class="math inline">\(Z\)</span>), and hybrid or inverse-hybrid parameters (<span class="math inline">\(H\)</span> or <span class="math inline">\(G\)</span>); see advanced circuit design texts such as <span class="citation" data-cites="gray2009analysis">(<a href="../../references.html#ref-gray2009analysis" role="doc-biblioref">Gray et al. 2009</a>)</span>. These models are particularly useful when reverse transmission (i.e., feedback from the output to the input) is incorporated in the circuit as part of the intended design.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-gray2009analysis" class="csl-entry" role="listitem">
+Gray, Paul R, Paul J Hurst, Stephen H Lewis, and Robert G Meyer. 2009. <em>Analysis and Design of Analog Integrated Circuits</em>. John Wiley &amp; Sons.
+</div></div><p>There are two reasons why we will work exclusively with unilateral two-port approximations in this module. First, the circuits considered are designed primarily to implement forward gain rather than reverse gain; feedback circuits are not treated in this module. For example, referring to the model of <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(b), the reverse gain Air will be negligibly small in any current amplifier circuit that we will consider. Second, a clear drawback of working with bilateral two-port models would be a significant increase in analysis complexity. As we have seen in Example 1-1, the overall transfer function of a unilateral two-port circuit can be written by applying simple voltage and current divider rules. This also extends to cascade connections of multiple two-ports. For example, the overall transfer function of the circuit in <a href="#fig-1.7" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> is easily written by inspection, without requiring extensive algebra. With reverse transmission included, the transfer function analysis will generally require solving a linear system of equations. In light of the fact that we do not intend to design circuits in this module that have significant reverse transmission, this increase in complexity is not welcome, and would also hinder us from developing intuition from inspection-driven analysis.</p>
+</section>
+<section id="construction-of-unilateral-two-port-models" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="construction-of-unilateral-two-port-models"><span class="header-section-number">1.3.3</span> Construction of Unilateral Two-Port Models</h3>
+<p>We will now describe the general procedures to calculate the controlled sources, as well as the input and output resistances, for the unilateral two-port models of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>. The approach is based on applying test voltages and currents to find the desired model parameters.</p>
+<p>The most important parameter of any amplifier circuit is its gain. To identify the gain parameters for the models of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(a)-(d), we apply the tests shown in <a href="#fig-1.13" class="quarto-xref">Figure&nbsp;<span>1.14</span></a>(a)-(d), respectively.</p>
+<ul>
+<li><p>To calculate the gain term <span class="math inline">\(A_v\)</span> of a voltage amplifier model, we apply a test voltage at the input with zero source resistance and measure the open-circuit output voltage. <span class="math inline">\(A_v = v_{oc} / v_t\)</span> is therefore also called the <strong>open-circuit voltage gain</strong>.</p></li>
+<li><p>To calculate the gain term <span class="math inline">\(A_i\)</span> of a current amplifier model, we apply a test current at the input with infinite source resistance and measure the short-circuit output current. <span class="math inline">\(A_i = i_{sc} / i_t\)</span> is therefore also called the <strong>short-circuit current gain</strong>.</p></li>
+<li><p>To calculate the gain term <span class="math inline">\(G_m\)</span> of a transconductance amplifier model, we apply a test voltage at the input with zero source resistance and measure the short-circuit output current to find <span class="math inline">\(G_m = i_{sc}/v_t\)</span>.</p></li>
+<li><p>To calculate the gain term <span class="math inline">\(R_m\)</span> of a transresistance amplifier model, we apply a test current at the input with infinite source resistance and measure the open-circuit output voltage to find <span class="math inline">\(R_m = v_{oc} / v_{it}\)</span>.</p></li>
+</ul>
+<div id="fig-1.13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.13.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.14: Method to calculate two-port amplifier model parameters: (a) voltage gain <span class="math inline">\(A_v\)</span>, (b) current gain <span class="math inline">\(A_i\)</span>, (c) transconductance <span class="math inline">\(G_m\)</span>, (d) transresistance <span class="math inline">\(R_m\)</span>, (e) input resistance <span class="math inline">\(R_in\)</span>, and (f) output resistance <span class="math inline">\(R_out\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>The rationale behind these tests can be understood by considering, for example, the case of the voltage amplifier model of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(a). When driven with an ideal voltage source, the effect of any resistance at the input port is eliminated, and the controlled source is directly stimulated by the applied test source (without any voltage division). Likewise, by measuring the resulting output voltage open-circuited, any resistance in series with the controlled source has no effect and the measurement therefore accurately extracts the parameter <span class="math inline">\(A_v\)</span>. Similar explanations apply to the test cases for the remaining amplifier models.</p>
+<p>The test setup for extracting the input and output resistances for all amplifier models is shown in <a href="#fig-1.13" class="quarto-xref">Figure&nbsp;<span>1.14</span></a>(e), and (f), respectively.</p>
+<ul>
+<li><p>To calculate the <strong>input resistance</strong> <span class="math inline">\(R_{in}\)</span> we apply a test voltage and measure the current coming from the test source, or apply a test current and mea- sure the voltage across the test source. In this test, the load resistance (<span class="math inline">\(R_L\)</span>) must be connected to the output port as shown in <a href="#fig-1.13" class="quarto-xref">Figure&nbsp;<span>1.14</span></a>(e).</p></li>
+<li><p>To calculate the <strong>output resistance</strong> <span class="math inline">\(R_out\)</span>, we apply either a test voltage or a test current source at the output port and measure the respective current or voltage from the source. Here, the input source must be set equal to zero. This means that input voltage sources are shorted and input current sources are open-circuited. Only the source resistance (<span class="math inline">\(R_S\)</span>) is left across the input terminals as shown in <a href="#fig-1.13" class="quarto-xref">Figure&nbsp;<span>1.14</span></a>(f).</p></li>
+</ul>
+<p>The above procedures extract the input and output resistances perfectly and without any approximations, even if the circuit is bilateral. As we shall see through the examples below, <span class="math inline">\(R_{in}\)</span> and <span class="math inline">\(R_{out}\)</span> do not depend on <span class="math inline">\(R_L\)</span> and <span class="math inline">\(R_S\)</span>, respectively, in a perfectly unilateral amplifier. However, this is not the case in a bilateral amplifier, and therefore the general procedure includes <span class="math inline">\(R_L\)</span> and <span class="math inline">\(R_S\)</span> in the test setup.</p>
+<p>In summary, the above procedures for measuring unilateral two-port model parameters aim at finding the best possible unilateral representation of an arbitrary amplifier circuit, which itself may or may not be unilateral. The obtained models are approximate when the amplifier is bilateral, since they do not include a controlled source that captures reverse transmission from the output back to the input. In most cases considered in this module, the reverse transmission term is negligible. Exceptions will be highlighted and treated as appropriate.</p>
+<p><strong>Example 1-2: Two-Port Model Calculations for a Unilateral Amplifier</strong></p>
+<p>For the transconductance amplifier in <a href="#fig-ex-1.2a" class="quarto-xref">Figure&nbsp;<span>1.15</span></a>, calculate the following two-port model parameters: the transconductance <span class="math inline">\(G_m\)</span>, the input resistance <span class="math inline">\(R_{in}\)</span>, and the output resistance <span class="math inline">\(R_{out}\)</span>. Also, compute the overall transfer function <span class="math inline">\(G'_m = i_{out} ⁄ v_s\)</span>.</p>
+<div id="fig-ex-1.2a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-1.2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-1.2a.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1.2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.15: Figure Ex1-2A
+</figcaption>
+</figure>
+</div>
+<p><strong>SOLUTION</strong></p>
+<p>To find the transconductance, we short the output port and apply an ideal test voltage source (<span class="math inline">\(v_t\)</span>) at the input (see <a href="#fig-ex-1.2a" class="quarto-xref">Figure&nbsp;<span>1.15</span></a>). From this circuit, we see that</p>
+<p><span class="math display">\[
+G_m = \frac{i_{sc}}{v_t} = \frac{g_m v_x \cdot \frac{R_3}{R_3 + R_4}}{v_t} = \frac{g_m v_x \cdot \frac{R_2}{R_1 + R_2} \cdot \frac{R_3}{R_3 + R_4}}{v_t} = g_m \cdot \frac{R_2}{R_1 + R_2} \cdot \frac{R_3}{R_3 + R_4}
+\]</span></p>
+<p>Next, to find <span class="math inline">\(R_in\)</span>, we apply a test voltage at the input and connect the load resistance <span class="math inline">\(R_L\)</span> at the output (<a href="#fig-ex-1.2b" class="quarto-xref">Figure&nbsp;<span>1.16</span></a>). From this circuit, we find that the input resistance is simply the series connection of <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span>, i.e., <span class="math inline">\(R_{in} = R_1 + R_2\)</span>. Note that the output network does not influence this result.</p>
+<div id="fig-ex-1.2b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-1.2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-1.2b.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1.2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.16: Figure Ex1-2B
+</figcaption>
+</figure>
+</div>
+<p>Finally, to find <span class="math inline">\(R_{out}\)</span>, we apply a test voltage at the output and connect the source resistance <span class="math inline">\(R_S\)</span> across the input port (the source <span class="math inline">\(v_s\)</span> is replaced by a short), (see <a href="#fig-ex-1.2b" class="quarto-xref">Figure&nbsp;<span>1.16</span></a>(c)). In the resulting circuit, <span class="math inline">\(v_x\)</span> must be zero, because no current is flowing in the input network. Thus, the controlled source carries no current and we conclude that <span class="math inline">\(R_{out} = R_3 + R_4\)</span>.</p>
+<p>In order to compute the transfer function of the complete circuit, we can reuse the result obtained in Example 1-1.</p>
+<p><span class="math display">\[
+G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+\]</span></p>
+<p>Substituting <span class="math inline">\(G_m\)</span>, <span class="math inline">\(R_{in}\)</span>, and <span class="math inline">\(R_{out}\)</span> from the above calculation yields the final result.</p>
+<p><span class="math display">\[
+G'_m = \frac{i_{out}}{v_s} = \frac{g_m R_2 R_3}{(R_1 + R_2 + R_S)(R_L + R_3 + R_4)}
+\]</span></p>
+<p>In the preceding example, we have seen that the source and load resistances have no effect on the extracted two-port parameters. In the following example, we will investigate a bilateral circuit to show that in general, the input and output resistances depend on <span class="math inline">\(R_S\)</span> and <span class="math inline">\(R_L\)</span>, which must therefore always be included in the general two-port modeling calculations.</p>
+<p><strong>Example 1-3: Two-Port Model Calculations for a Bilateral Amplifier</strong></p>
+<p>For the current amplifier in <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(a), calculate the following unilateral two-port model parameters: the current gain <span class="math inline">\(A_i\)</span>, the input resistance <span class="math inline">\(R_in\)</span>, and the output resistance <span class="math inline">\(R_out\)</span>. Also, compute the overall transfer function <span class="math inline">\(i_{out} / v_s\)</span> using the obtained unilateral two-port model. Compare the result to a direct KCL-based analysis of the transfer function. Assume that the circuit is driven by a current source with resistance <span class="math inline">\(R_S\)</span> and loaded by a resistance <span class="math inline">\(R_L\)</span>. For algebraic simplicity, assume $R_1 = 1 / g_m $ (this case corresponds to the common-gate amplifier circuit covered in Chapter 4).</p>
+<p><strong>SOLUTION</strong></p>
+<p>To find the current gain Ai, we short the output port and apply an ideal test current source (<span class="math inline">\(i_t\)</span>) at the input (see <a href="#fig-ex-1.3" class="quarto-xref">Figure&nbsp;<span>1.17</span></a>(a)). From this circuit, we see that</p>
+<p><span class="math display">\[
+v_{in} = \Bigl( g_m + \frac{1}{R_2} \Bigr)^{-1} \cdot i_t
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+i_{sc} = - \Bigl( g_m + \frac{1}{R_2} \Bigr) \cdot v_{in}
+\]</span></p>
+<p>Thus, Ai = isc/it = –1.</p>
+<p>Next, to find <span class="math inline">\(R_{in}\)</span>, we apply a test voltage at the input and connect the load resistance <span class="math inline">\(R_L\)</span> at the output (<a href="#fig-ex-1.3" class="quarto-xref">Figure&nbsp;<span>1.17</span></a>(b)). From this circuit, we note that the input resistance is not easily identified by inspection. Hence we write KCL for the two nodes of the circuit (<span class="math inline">\(v_t\)</span> and <span class="math inline">\(v_out\)</span>).</p>
+<p><span class="math display">\[
+0 = -i_t + g_m v_t + \frac{v_t - v_out}{R_2}
+\]</span></p>
+<p><span class="math display">\[
+0 = - g_m v_t + \frac{v_{out}}{R_L} + \frac{v_t - v_out}{R_2}
+\]</span></p>
+<p>Solving this system of equations yields</p>
+<p><span class="math display">\[
+R_{in} = \frac{v_t}{i_t} = \frac{R_2 + R_L}{1 + g_m R_2} = \frac{1 + \frac{R_L}{R_2}}{g_m + \frac{1}{R_2}}
+\]</span></p>
+<p>Note from this result that <span class="math inline">\(R_in\)</span> depends on <span class="math inline">\(R_L\)</span>, as mentioned previously; this dependency stems from the bilateral structure of the circuit. Also note that Rin approaches <span class="math inline">\(1 / g_m\)</span> when <span class="math inline">\(R_2\)</span> is large compared to <span class="math inline">\(R_L\)</span> and $ 1 / g_m$. We will revisit this important point in Chapter 4, in the context of a common-gate amplifier circuit.</p>
+<div id="fig-ex-1.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-1.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-1.3.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.17: Figure Ex1-3
+</figcaption>
+</figure>
+</div>
+<p>Now, to find <span class="math inline">\(R_{out}\)</span>, we apply a test voltage at the output and connect the source resistance <span class="math inline">\(R_S\)</span> across the input port <a href="#fig-ex-1.3" class="quarto-xref">Figure&nbsp;<span>1.17</span></a>. Again, we must write KCL at the two circuit nodes and solve the resulting system of equations. This yields</p>
+<p><span class="math display">\[
+R_{out} = \frac{v_t}{i_t} = R_2 R_S + g_m R_2 R_S
+\]</span></p>
+<p>Again, note that <span class="math inline">\(R_out\)</span> is a function of <span class="math inline">\(R_S\)</span>; this is the case for any bilateral circuit.</p>
+<p>Finally, to compute the transfer function based on the obtained unilateral model, we consider the circuit shown in <a href="#fig-ex-1.3" class="quarto-xref">Figure&nbsp;<span>1.17</span></a>(d). By inspection, we see that</p>
+<p><span class="math display">\[
+A_i' \frac{i_{out}}{i_s} = \Bigl( \frac{R_S}{R_{in} + R_S} \Bigr) A_i \frac{R_{out}}{R_L + R_{out}}
+\]</span></p>
+<p>Substituting <span class="math inline">\(A_i\)</span>, <span class="math inline">\(R_{in}\)</span>, and <span class="math inline">\(R_{out}\)</span> from the above calculation into this expression yields</p>
+<p><span class="math display">\[
+A_{i, Two-Port}' = \frac{i_{out}}{i_s} = \frac{R_S(1 + g_m R_2)(R_2 + R_S + g_m R_2 R_S)}{(R_L + R_2 + R_S + g_m R_2 R_S)^2}
+\]</span></p>
+<p>We now wish to compare this result to the accurate transfer function of the circuit, obtained by direct calculation and without approximating the circuit as a unilateral two-port. For this purpose, we consider the full circuit shown in <a href="#fig-ex-1.3" class="quarto-xref">Figure&nbsp;<span>1.17</span></a>(e) and write KCL for its two nodes.</p>
+<p><span class="math display">\[
+0 = - i_s + g_m v_in + \frac{v_{in}}{R_S} + \frac{v_{in} - v_{out}}{R_2}
+\]</span></p>
+<p><span class="math display">\[
+0 = -g_m v_{in} + \frac{v_{out}}{R_L} + \frac{v_{out} - v_{in}}{R_2}
+\]</span></p>
+<p>Solving this system of equations for <span class="math inline">\(v_{out}\)</span> and substituting <span class="math inline">\(i_{out} = - v_{out} / R_L\)</span> yields</p>
+<p><span class="math display">\[
+A_{i, Exact}' = \frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} =
+\frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
+\]</span></p>
+<p>The discrepancy factor between the two results is given by</p>
+<p><span class="math display">\[
+\frac{A_{i, Two-Port}'}{A_{i, Exact}'} = \frac{R_2 + R_S + g_m R_2 R_S}{R_L + R_2 + R_S + g_m R_2 R_S} = \frac{1 + R_S \Bigl(\frac{1}{R_2} + g_m}{1 + \frac{R_L}{R_2} + R_S \Bigl(\frac{1}{R_2} + g_m \Bigr)}
+\]</span></p>
+<p>From this result, we see that the discrepancy factor approaches unity (no error) when <span class="math inline">\(R_2\)</span> is much larger than <span class="math inline">\(R_L\)</span>, a condition that is often satisfied in practice (the ideal load for a current amplifier is a short circuit). In this case, the unilateral two-port model will accurately describe the behavior of the circuit.</p>
+<p>The outcome of the above example captures the main spirit in which we justify relying on unilateral two-port models in this module. Even though the considered amplifier is strictly speaking bilateral, a unilateral model describes its behavior to within the desired engineering accuracy, provided that reason- able boundary conditions hold.</p>
+</section>
+</section>
+<section id="integrated-circuit-design-versus-printed-circuit-board-design" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="integrated-circuit-design-versus-printed-circuit-board-design"><span class="header-section-number">1.4</span> Integrated Circuit Design versus Printed Circuit Board Design</h2>
+<p>In the design of analog circuits, the underlying technology has a significant impact on the choice of architecture, because it tends to restrict the availability and specification range of the underlying active and passive components. For instance, a designer working with discrete components on a printed circuit board may be subjected to the following constraints:</p>
+<ul>
+<li><p>Limit the component count below 100 elements to achieve a small board area.</p></li>
+<li><p>Resistors can be chosen in the range of 1Ω–10MΩ.</p></li>
+<li><p>Capacitors can be chosen in the range of 1pF–10,000 μF.</p></li>
+<li><p>The resistor and capacitor values match to within 1–10%.</p></li>
+<li><p>The available (discrete) bipolar junction transistors match to within 20% in their critical parameters.</p></li>
+</ul>
+<p>In contrast, the designer of a CMOS system-on-chip may face the constraints summarized below:</p>
+<ul>
+<li><p>Avoid using resistors; use as many MOSFET transistors as needed (within reasonable limits, on the order of hundreds to several thousands) to realize the best possible circuit implementation.</p></li>
+<li><p>Capacitors can be chosen in the range of 10 fF–100 pF.</p></li>
+<li><p>The critical parameters in the MOSFET transistors be made to match to within 1%, but vary by more than 30% for different fabrication runs.</p></li>
+<li><p>Capacitors of similar size can match to within 0.1%, but vary by more than 10% for different fabrication runs.</p></li>
+</ul>
+<p>As a consequence of the vastly different constraints that apply to the design of analog circuits in CMOS technology, the resulting practical and preferred circuit architectures differ substantially from the ones that would be used in a printed circuit board design. For example, a discrete voltage amplifier may utilize large AC coupling capacitors to simplify and decouple the biasing of the individual gain stages (see example in <a href="#fig-1.14" class="quarto-xref">Figure&nbsp;<span>1.18</span></a>). In contrast, it is typically not possible to use AC coupling techniques (except for very high-frequency designs) in integrated circuits, primarily due to the restriction on maximum capacitor size.</p>
+<div id="fig-1.14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.14.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.18: Example of a discrete amplifier circuit using bipolar junction transistors (BJTs).
+</figcaption>
+</figure>
+</div>
+<p>The material covered in this module is primarily concerned with analog integrated circuit design. While this choice does not affect many of the key principles used in the analysis and the discussed circuits, it does affect the architectural choices made in arriving at a practical design. For instance, large AC coupling capacitors are not used throughout the discussion. Also, where appropriate, we will invoke certain assumptions about the typical matching of component parameters in CMOS to eliminate impractical design choices.</p>
+</section>
+<section id="prerequisites-and-advanced-material" class="level2 page-columns page-full" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="prerequisites-and-advanced-material"><span class="header-section-number">1.5</span> Prerequisites and Advanced Material</h2>
+<p>The reader of this module is expected to be familiar with the basis concepts of linear circuit analysis (see <span class="citation" data-cites="ulaby2018circuit">(<a href="../../references.html#ref-ulaby2018circuit" role="doc-biblioref">Ulaby and Maharbiz 2013</a>)</span>), including</p>
+<div class="no-row-height column-margin column-container"><div id="ref-ulaby2018circuit" class="csl-entry" role="listitem">
+Ulaby, Fawwaz Tayssir, and Michel M Maharbiz. 2013. <em>Circuit Analysis and Design</em>. 2nd Edition. NTS Press.
+</div></div><ul>
+<li><p>Passive components (resistors, capacitors)</p></li>
+<li><p>Kirchhoff’s voltage and current laws (KVL and KCL)</p></li>
+<li><p>Independent and dependent voltage and current sources; Thevénin and Norton representation of controlled sources</p></li>
+<li><p>Two-port representation of circuits; calculation of port resistances and frequency dependent impedances</p></li>
+<li><p>Manipulation of complex variables and numbers</p></li>
+<li><p>Phasor analysis and Laplace domain representation of passive circuit elements</p></li>
+<li><p>Bode plots</p></li>
+</ul>
+<p>The derivations of device models in this module assume familiarity with basic solid-state physics and electrostatics as treated in introductory texts on solid-state device physics (see <span class="citation" data-cites="robert2003pierret">(<a href="../../references.html#ref-robert2003pierret" role="doc-biblioref">Robert 2003</a>)</span>). A few sections of this module are marked with an asterisk (*) to indicate advanced material that may in some cases go beyond the learning goals of an introductory course. These sections can be skipped at the instructor’s discretion without affecting the overall flow and context.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-robert2003pierret" class="csl-entry" role="listitem">
+Robert, F. 2003. <span>“Pierret: Semiconductor Device Fundamentals.”</span> Reading, MA: Addison-Wesley.
+</div></div></section>
+<section id="notation" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="notation"><span class="header-section-number">1.6</span> Notation</h2>
+<p>This module follows the notation for signal variables as standardized by the IEEE. Total signals are composed of the sum of DC quantities and small signals. For example, a total input voltage <span class="math inline">\(v_{IN}\)</span> is the sum of a DC input voltage <span class="math inline">\(V_{IN}\)</span> and a small-signal voltage <span class="math inline">\(v_{in}\)</span>. The notation is summarized below.</p>
+<ul>
+<li><p>Total quantity has a lowercase variable name and uppercase subscript</p></li>
+<li><p>DC quantity has an uppercase variable name and uppercase subscript</p></li>
+<li><p>Small-signal quantity has a lowercase variable name and lowercase subscript</p></li>
+</ul>
+</section>
+<section id="summary" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Summary</h1>
+<p>This chapter offered a brief motivation for the topics covered in this module, which focuses on the analysis and design of elementary amplifier stages in CMOS technology. These elementary stages can be viewed as the “atoms” of analog circuit design and a thorough understanding of the blocks is a necessary prerequisite for the design of advanced analog circuits design, as for instance in the context of large systems-on-chip. At all levels of circuit design, complexity is managed using hierarchical abstraction and model simplification using proper engineering approximations. The unilateral two-port models reviewed in Section 1-3 and used throughout this module, are an example of such abstractions.</p>
+<div id="fig-p1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p1-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Figure P1-1
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="problems" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problems</h1>
+<p><strong>P1.1</strong> Given the amplifier circuit in <a href="#fig-p1-1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> (a) Find the input and output resistance. (b) Construct an equivalent circuit using a voltage amplifier two-port model and determine all model parameters symbolically. (c) Repeat part (b) for a current amplifier model. (d) Repeat part (b) for a transconductance amplifier model. (e) Repeat part (b) for a transresistance amplifier model.</p>
+<p><strong>P1.2</strong> Convince yourself that the circuits of <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a> and <a href="#fig-1.11" class="quarto-xref">Figure&nbsp;<span>1.12</span></a> are equivalent by showing sym- bolically that both circuits have the same overall voltage gain <span class="math inline">\(A'_v = v_{out} ⁄ v_s\)</span>.</p>
+<p><strong>P1.3</strong> You are given an input voltage source with a source resistance, <span class="math inline">\(R_S\)</span>. (a) Use the unilateral voltage amplifier two-port model found in P1.1 to find the overall voltage gain when the amplifier is driving a load resistor RL . (b) Specify whether the resistances <span class="math inline">\(r_1\)</span>, <span class="math inline">\(r_i\)</span>, <span class="math inline">\(r_o\)</span>, <span class="math inline">\(r_2\)</span> in the small signal model should be increased, be decreased, or remain the same to improve the overall voltage gain.</p>
+<p><strong>P1.4</strong> You are given an input current source with a source resistance, <span class="math inline">\(R_S\)</span>. (a) Use the unilateral current amplifier two-port model found in P1.1 to find the overall current gain when the amplifier is driving a load resistor <span class="math inline">\(R_L\)</span>. (b) Specify whether the resistances <span class="math inline">\(r_1\)</span>, <span class="math inline">\(r_i\)</span>, <span class="math inline">\(r_o\)</span>, <span class="math inline">\(r_2\)</span> in the small-signal model should be increased, be decreased, or remain the same to improve the overall current gain.</p>
+<p><strong>P1.5</strong> Given the circuit model in <a href="#fig-p1-5" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> for an amplifier circuit (a) Find the input and output resistance. (b) Construct a two-port model for a unilateral voltage amplifier. (c) Construct a two-port model for a unilateral current amplifier. (d) Construct a two-port model for a unilateral transconductance amplifier. (e) Construct a two-port model for a unilateral transresistance amplifier.</p>
+<div id="fig-p1-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p1-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p1-5.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p1-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Figure P1-5
+</figcaption>
+</figure>
+</div>
+<p><strong>P1.6</strong> Consider the two-port model of a voltage amplifier as shown in <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(a) with the following parameters: <span class="math inline">\(A_v\)</span> = 10, <span class="math inline">\(R_{in}\)</span> = 5 kΩ, and <span class="math inline">\(R_{out}\)</span> = 100 Ω.</p>
+<ol type="a">
+<li>Draw the two-port model for a transresistance amplifier by conversion from the voltage amplifier model.</li>
+<li>Draw the two-port model for a transconductance amplifier by conversion from the voltage amplifier model.</li>
+<li>Draw the two-port model for a current amplifier by conversion from the voltage amplifier model.</li>
+</ol>
+<p><strong>P1.7</strong> Derive an expression for the transresistance <span class="math inline">\(v_{out} / i_{in}\)</span> for the circuit of <a href="#fig-1.7" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> using the following parameters: <span class="math inline">\(A_{i1}\)</span> = 1, <span class="math inline">\(G_{m2}\)</span> = 10 mS, <span class="math inline">\(A_{v3}\)</span> = 0.8, <span class="math inline">\(R_in1\)</span> = 50 Ω, <span class="math inline">\(R_{out1}\)</span> = 500 Ω, <span class="math inline">\(R_{out2}\)</span> = 1 kΩ, and <span class="math inline">\(R_{out3}\)</span> = 100 Ω. Using this result, lump the entire circuit into a single transresistance amplifier as shown in <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(d). Draw the resulting model, including <span class="math inline">\(R_{in}\)</span> and <span class="math inline">\(R_{out}\)</span>.</p>
+<p><strong>P1.8</strong> Consider the amplifier circuit of <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(a) with <span class="math inline">\(R_1 = 1/g_m\)</span> = 1 kΩ and R2 = 100 kΩ. Compute all component values for the bilateral two-port current amplifier model of <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(b). Note that <span class="math inline">\(A_{if}\)</span>, <span class="math inline">\(R_{in}\)</span>, and <span class="math inline">\(R_out\)</span> can be described as explained in Section 1-3. Similar to <span class="math inline">\(A_{if}\)</span>, <span class="math inline">\(A_{ir}\)</span> is found by short-circuiting the input port and by injecting a test current into the output port. Compare the relative magnitude of <span class="math inline">\(A_{if}\)</span> and <span class="math inline">\(A_{ir}\)</span>.</p>
+
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="harvard-edge/cs249r_book" data-repo-id="R_kgDOKQSOaw" data-category="General" data-category-id="DIC_kwDOKQSOa84CZ8Ry" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../contents/chapter2/chapter2.html" class="pagination-link" aria-label="Transfer Characteristic of the Common-Source Voltage Amplifier">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transfer Characteristic of the Common-Source Voltage Amplifier</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Written, edited and curated by Prof.&nbsp;Boris Murmann</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/harvard-edge/cs249r_book/edit/dev/contents/chapter1/introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/blob/dev/contents/chapter1/introduction.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
