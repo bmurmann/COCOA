@@ -152,5 +152,16 @@
       "REFERENCES",
       "References"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Analysis and Design of Elementary MOS Amplifier Stages",
+    "section": "",
+    "text": "Acknowledgements\nI would like to thank Charlie Sodini and Roger Howe for establishing this book series and for their help during the creation of this module. Special thanks go to my loving wife Yukiko, who patiently supported me during the preparation of this book.",
+    "crumbs": [
+      "FRONT MATTER",
+      "Acknowledgements"
+    ]
   }
 ]
