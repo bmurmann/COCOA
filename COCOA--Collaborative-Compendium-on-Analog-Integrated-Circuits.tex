@@ -125,81 +125,6 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{mathptmx}
-\usepackage{fontspec}
-\usepackage{underscore}
-\usepackage[english]{babel}
-\usepackage{etoolbox}
-\usepackage{fontspec}
-\usepackage{newpxtext} % Palatino-like font
-\usepackage{hyperref} % For hyperlinks
-\usepackage{xcolor}
-\usepackage[format=plain,
-    labelfont={bf,it},
-    textfont=it, labelsep=space]{caption}
-
-\definecolor{crimson}{RGB}{165, 28, 48}
-
-\hypersetup{
-  colorlinks=true, % Enable colored links
-  linkcolor=crimson, % Color of internal links
-  citecolor=crimson, % Color of citations
-  urlcolor=crimson % Color of URLs
-}
-
-\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
-
-%\newfontfamily\tocfont{Times New Roman}
-
-\let\endtitlepage\relax
-
-\AtBeginDocument{
-  \begin{titlepage}
-  \centering
-  \vspace{-3em}
-  %\includegraphics[width=\textwidth]{cover-image.pdf} % Adjust the size and path to your image
-  \newpage
-  {{\Huge\bfseries Analysis and Design of Elementary MOS Amplifier Stages}\\[1em] \Large The Modular Series of Microelectronic Device \& Circuit Design\par}
-
-  \vspace*{\fill}
-    {\large Curated by \\[.2cm] Prof. Boris Murmann \\[.2cm] University of Hawaii \\[1em] \normalsize {\itshape With special thanks to the community for their contributions and support.} \\[1em] \pagebreak \vfill \scriptsize Last Modified: \today\par \vfill}
-  \vspace*{\fill}
-
-  \end{titlepage}
-  
-  %\addtocontents{toc}{\tocfont}
-}
-
-\let\endtitlepage\relax
-
-\pagestyle{fancy}
-\fancyhf{} % Clear all header and footer fields
-\fancyhead[LE,RO]{\thepage} % Page number on the left on even pages, right on odd pages
-\fancyhead[RE,LO]{\nouppercase{\leftmark}} % Chapter name on both sides
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-
-\fancypagestyle{plain}{%
-  \fancyhf{} % clear all header and footer fields
-  \fancyhead[LE,RO]{\thepage} % Page number
-  \renewcommand{\headrulewidth}{0.4pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
-
-\addtokomafont{disposition}{\rmfamily\color{crimson}}
-\addtokomafont{chapter}{\color{crimson}}
-\addtokomafont{section}{\color{crimson}}
-
-% Define the abstract environment
-\newenvironment{abstract}{%
-    \chapter*{\abstractname}%
-    \addcontentsline{toc}{chapter}{\abstractname}%
-    \small
-}{%
-    \clearpage
-}
 \makeatletter
 \@ifpackageloaded{float}{}{\usepackage{float}}
 \floatstyle{plain}
@@ -523,7 +448,7 @@ will motivate this subject by looking at an example of a mixed-signal IC
 and by highlighting the need for a systematic study of the fundamental
 principles and proper engineering approximations in analog design.
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, rightrule=.15mm, breakable, leftrule=.75mm, left=2mm, opacityback=0, toprule=.15mm, colback=white, coltitle=black, bottomtitle=1mm, bottomrule=.15mm, titlerule=0mm, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Chapter Objectives}, arc=.35mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, arc=.35mm, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Chapter Objectives}, leftrule=.75mm, breakable, rightrule=.15mm, opacityback=0, left=2mm, bottomtitle=1mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, titlerule=0mm, bottomrule=.15mm]
 
 \begin{itemize}
 \item

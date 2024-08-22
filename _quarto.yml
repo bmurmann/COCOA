@@ -10,47 +10,39 @@ project:
     - "contents/*/*.qmd"
     - "contents/*/*/*.qmd"
     - "contents/*/*/*/*.qmd"
-    - "contents/*/*/*/*/*.qmd" # contents/labs/<vendor>/<board>/<exercises>/*.qmd
+    - "contents/*/*/*/*/*.qmd"
 
 book:
 #  google-analytics:
 #    tracking-id: ""
 #    anonymize-ip: true
 #    version: 4
-    
 #  comments: 
 #    hypothesis:
 #      theme: clean
 #      openSidebar: true
-
   search:
     keyboard-shortcut: ["~", "/"]
     location: sidebar
-
   navbar:
     pinned: false
     collapse: true
     back-to-top-navigation: true
-
-  #favicon: favicon.png
-  #cover-image: cover-image.pdf
-  #cover-image-alt: "Cover image."
-
+#  favicon: favicon.png
+#  cover-image: cover-image.pdf
+#  cover-image-alt: "Cover image."
   bread-crumbs: true
-
   sidebar:
     collapse-level: 2
     border: true
     pinned: false
     search: true
-
   page-navigation: true
   title: "COCOA: Collaborative Compendium on Analog Integrated Circuits"
   subtitle: ""
   abstract: ""
-
-  repo-url: https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits
-  repo-branch: dev
+  repo-url: https://github.com/bmurmann/COCOA
+  repo-branch: main
   repo-actions: [edit, issue, source]
   downloads: [pdf]
   sharing: [twitter, facebook]
@@ -74,18 +66,15 @@ book:
     - text: "---"  
 
 citation: true
-
 license: CC-BY
-
 filters:
   - custom_callout.lua
-
 bibliography: 
   - contents/chapter1/introduction.bib
 
 #comments:
 #  giscus:
-#    repo: bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits
+#  repo: bmurmann/COCOA
 
 format:
   html:
@@ -118,6 +107,7 @@ format:
     number-depth: 3
     toc: true
     toc-depth: 4	
+    citeproc: true
     #include-in-header:
     #  text: | 
     #    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
@@ -125,13 +115,11 @@ format:
     #    <script src="/scripts/ai_menu/dist/142.bundle.js" defer></script>
     #    <script src="/scripts/ai_menu/dist/384.bundle.js" defer></script>
     #    <script src="/scripts/ai_menu/dist/761.bundle.js" defer></script>
-        
-    citeproc: true
-
+  
   pdf:
     documentclass: scrbook
     classoption: [abstract]
-    keep-tex: true
+    keep-tex: false
     toc: true  # Table of Contents
     toc-depth: 3  # Depth of headings to include in TOC
     number-sections: true
@@ -145,83 +133,83 @@ format:
     fig-cap-location: bottom
     tbl-cap-location: top
 
-    include-in-header:
-      text: |
-        \usepackage{fancyhdr}
-        \usepackage{graphicx}
-        \usepackage{mathptmx}
-        \usepackage{fontspec}
-        \usepackage{underscore}
-        \usepackage[english]{babel}
-        \usepackage{etoolbox}
-        \usepackage{fontspec}
-        \usepackage{newpxtext} % Palatino-like font
-        \usepackage{hyperref} % For hyperlinks
-        \usepackage{xcolor}
-        \usepackage[format=plain,
-            labelfont={bf,it},
-            textfont=it, labelsep=space]{caption}
+    # include-in-header:
+    #   text: |
+    #     \usepackage{fancyhdr}
+    #     \usepackage{graphicx}
+    #     \usepackage{mathptmx}
+    #     \usepackage{fontspec}
+    #     \usepackage{underscore}
+    #     \usepackage[english]{babel}
+    #     \usepackage{etoolbox}
+    #     \usepackage{fontspec}
+    #     \usepackage{newpxtext} % Palatino-like font
+    #     \usepackage{hyperref} % For hyperlinks
+    #     \usepackage{xcolor}
+    #     \usepackage[format=plain,
+    #         labelfont={bf,it},
+    #         textfont=it, labelsep=space]{caption}
 
-        \definecolor{crimson}{RGB}{165, 28, 48}
+    #     \definecolor{crimson}{RGB}{165, 28, 48}
 
-        \hypersetup{
-          colorlinks=true, % Enable colored links
-          linkcolor=crimson, % Color of internal links
-          citecolor=crimson, % Color of citations
-          urlcolor=crimson % Color of URLs
-        }
+    #     \hypersetup{
+    #       colorlinks=true, % Enable colored links
+    #       linkcolor=crimson, % Color of internal links
+    #       citecolor=crimson, % Color of citations
+    #       urlcolor=crimson % Color of URLs
+    #     }
 
-        \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+    #     \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
-        %\newfontfamily\tocfont{Times New Roman}
+    #     %\newfontfamily\tocfont{Times New Roman}
 
-        \let\endtitlepage\relax
+    #     \let\endtitlepage\relax
 
-        \AtBeginDocument{
-          \begin{titlepage}
-          \centering
-          \vspace{-3em}
-          %\includegraphics[width=\textwidth]{cover-image.pdf} % Adjust the size and path to your image
-          \newpage
-          {{\Huge\bfseries Analysis and Design of Elementary MOS Amplifier Stages}\\[1em] \Large The Modular Series of Microelectronic Device \& Circuit Design\par}
+    #     \AtBeginDocument{
+    #       \begin{titlepage}
+    #       \centering
+    #       \vspace{-3em}
+    #       %\includegraphics[width=\textwidth]{cover-image.pdf} % Adjust the size and path to your image
+    #       \newpage
+    #       {{\Huge\bfseries Analysis and Design of Elementary MOS Amplifier Stages}\\[1em] \Large The Modular Series of Microelectronic Device \& Circuit Design\par}
 
-          \vspace*{\fill}
-            {\large Curated by \\[.2cm] Prof. Boris Murmann \\[.2cm] University of Hawaii \\[1em] \normalsize {\itshape With special thanks to the community for their contributions and support.} \\[1em] \pagebreak \vfill \scriptsize Last Modified: \today\par \vfill}
-          \vspace*{\fill}
+    #       \vspace*{\fill}
+    #         {\large Curated by \\[.2cm] Prof. Boris Murmann \\[.2cm] University of Hawaii \\[1em] \normalsize {\itshape With special thanks to the community for their contributions and support.} \\[1em] \pagebreak \vfill \scriptsize Last Modified: \today\par \vfill}
+    #       \vspace*{\fill}
 
-          \end{titlepage}
+    #       \end{titlepage}
           
-          %\addtocontents{toc}{\tocfont}
-        }
+    #       %\addtocontents{toc}{\tocfont}
+    #     }
 
-        \let\endtitlepage\relax
+    #     \let\endtitlepage\relax
 
-        \pagestyle{fancy}
-        \fancyhf{} % Clear all header and footer fields
-        \fancyhead[LE,RO]{\thepage} % Page number on the left on even pages, right on odd pages
-        \fancyhead[RE,LO]{\nouppercase{\leftmark}} % Chapter name on both sides
-        \renewcommand{\headrulewidth}{0.4pt}
-        \renewcommand{\footrulewidth}{0pt}
+    #     \pagestyle{fancy}
+    #     \fancyhf{} % Clear all header and footer fields
+    #     \fancyhead[LE,RO]{\thepage} % Page number on the left on even pages, right on odd pages
+    #     \fancyhead[RE,LO]{\nouppercase{\leftmark}} % Chapter name on both sides
+    #     \renewcommand{\headrulewidth}{0.4pt}
+    #     \renewcommand{\footrulewidth}{0pt}
         
-        \fancypagestyle{plain}{%
-          \fancyhf{} % clear all header and footer fields
-          \fancyhead[LE,RO]{\thepage} % Page number
-          \renewcommand{\headrulewidth}{0.4pt}
-          \renewcommand{\footrulewidth}{0pt}
-        }
+    #     \fancypagestyle{plain}{%
+    #       \fancyhf{} % clear all header and footer fields
+    #       \fancyhead[LE,RO]{\thepage} % Page number
+    #       \renewcommand{\headrulewidth}{0.4pt}
+    #       \renewcommand{\footrulewidth}{0pt}
+    #     }
 
-        \addtokomafont{disposition}{\rmfamily\color{crimson}}
-        \addtokomafont{chapter}{\color{crimson}}
-        \addtokomafont{section}{\color{crimson}}
+    #     \addtokomafont{disposition}{\rmfamily\color{crimson}}
+    #     \addtokomafont{chapter}{\color{crimson}}
+    #     \addtokomafont{section}{\color{crimson}}
 
-        % Define the abstract environment
-        \newenvironment{abstract}{%
-            \chapter*{\abstractname}%
-            \addcontentsline{toc}{chapter}{\abstractname}%
-            \small
-        }{%
-            \clearpage
-        }
+    #     % Define the abstract environment
+    #     \newenvironment{abstract}{%
+    #         \chapter*{\abstractname}%
+    #         \addcontentsline{toc}{chapter}{\abstractname}%
+    #         \small
+    #     }{%
+    #         \clearpage
+    #     }
         
 crossref:
   appendix-title: "Appendix"
