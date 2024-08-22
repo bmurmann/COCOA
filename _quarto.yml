@@ -181,7 +181,7 @@ format:
           \begin{titlepage}
           \centering
           \vspace{-3em}
-          \includegraphics[width=\textwidth]{cover-image.pdf} % Adjust the size and path to your image
+          %\includegraphics[width=\textwidth]{cover-image.pdf} % Adjust the size and path to your image
           \newpage
           {{\Huge\bfseries Analysis and Design of Elementary MOS Amplifier Stages}\\[1em] \Large The Modular Series of Microelectronic Device \& Circuit Design\par}
 

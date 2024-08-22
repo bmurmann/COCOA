@@ -1,0 +1,1679 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  letterpaper,
+  abstract]{scrbook}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{mathptmx}
+\usepackage{fontspec}
+\usepackage{underscore}
+\usepackage[english]{babel}
+\usepackage{etoolbox}
+\usepackage{fontspec}
+\usepackage{newpxtext} % Palatino-like font
+\usepackage{hyperref} % For hyperlinks
+\usepackage{xcolor}
+\usepackage[format=plain,
+    labelfont={bf,it},
+    textfont=it, labelsep=space]{caption}
+
+\definecolor{crimson}{RGB}{165, 28, 48}
+
+\hypersetup{
+  colorlinks=true, % Enable colored links
+  linkcolor=crimson, % Color of internal links
+  citecolor=crimson, % Color of citations
+  urlcolor=crimson % Color of URLs
+}
+
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+%\newfontfamily\tocfont{Times New Roman}
+
+\let\endtitlepage\relax
+
+\AtBeginDocument{
+  \begin{titlepage}
+  \centering
+  \vspace{-3em}
+  %\includegraphics[width=\textwidth]{cover-image.pdf} % Adjust the size and path to your image
+  \newpage
+  {{\Huge\bfseries Analysis and Design of Elementary MOS Amplifier Stages}\\[1em] \Large The Modular Series of Microelectronic Device \& Circuit Design\par}
+
+  \vspace*{\fill}
+    {\large Curated by \\[.2cm] Prof. Boris Murmann \\[.2cm] University of Hawaii \\[1em] \normalsize {\itshape With special thanks to the community for their contributions and support.} \\[1em] \pagebreak \vfill \scriptsize Last Modified: \today\par \vfill}
+  \vspace*{\fill}
+
+  \end{titlepage}
+  
+  %\addtocontents{toc}{\tocfont}
+}
+
+\let\endtitlepage\relax
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[LE,RO]{\thepage} % Page number on the left on even pages, right on odd pages
+\fancyhead[RE,LO]{\nouppercase{\leftmark}} % Chapter name on both sides
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[LE,RO]{\thepage} % Page number
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\addtokomafont{disposition}{\rmfamily\color{crimson}}
+\addtokomafont{chapter}{\color{crimson}}
+\addtokomafont{section}{\color{crimson}}
+
+% Define the abstract environment
+\newenvironment{abstract}{%
+    \chapter*{\abstractname}%
+    \addcontentsline{toc}{chapter}{\abstractname}%
+    \small
+}{%
+    \clearpage
+}
+\makeatletter
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{plain}
+\@ifundefined{c@chapter}{\newfloat{lab}{h}{lolabq}}{\newfloat{lab}{h}{lolabq}[chapter]}
+\floatname{lab}{Lab}
+\newcommand*\listoflabs{\listof{lab}{List of Labs}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{plain}
+\@ifundefined{c@chapter}{\newfloat{exr}{h}{loexr}}{\newfloat{exr}{h}{loexr}[chapter]}
+\floatname{exr}{Exercise}
+\newcommand*\listofexrs{\listof{exr}{List of Exercises}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{plain}
+\@ifundefined{c@chapter}{\newfloat{vid}{h}{lovid}}{\newfloat{vid}{h}{lovid}[chapter]}
+\floatname{vid}{Video}
+\newcommand*\listofvids{\listof{vid}{List of Videos}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={COCOA: Collaborative Compendium on Analog Integrated Circuits},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{COCOA: Collaborative Compendium on Analog Integrated Circuits}
+\author{}
+\date{}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\mainmatter
+\chapter*{Preface}\label{preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+\markboth{Preface}{Preface}
+
+Welcome to COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits.
+
+We aim to make this open-source book a collaborative effort that brings
+together insights from students, professionals, and the broader
+community of analog circuit designers.
+
+\chapter*{Why We Wrote This Book}\label{why-we-wrote-this-book}
+\addcontentsline{toc}{chapter}{Why We Wrote This Book}
+
+\markboth{Why We Wrote This Book}{Why We Wrote This Book}
+
+We're in an age where technology is always evolving. Open collaboration
+and sharing knowledge are the building blocks of true innovation. That's
+the spirit behind this effort. We go beyond the traditional textbook
+model to create a living knowledge hub, so that we can all share and
+learn from one another.
+
+\chapter*{Book Conventions}\label{book-conventions}
+\addcontentsline{toc}{chapter}{Book Conventions}
+
+\markboth{Book Conventions}{Book Conventions}
+
+For details on the conventions used in this book, check out the
+\href{./contents/conventions.qmd}{Conventions} section.
+
+\chapter*{Get in Touch}\label{get-in-touch}
+\addcontentsline{toc}{chapter}{Get in Touch}
+
+\markboth{Get in Touch}{Get in Touch}
+
+Do you have questions or feedback? Feel free to
+\href{mailto:bmurmann@hawaii.edu?subject=“COCOA”}{e-mail Boris Murmann}
+directly, or you are welcome to start a discussion thread on GitHub.
+
+\part{FRONT MATTER}
+
+\chapter*{Conventions Used in this
+Book}\label{conventions-used-in-this-book}
+\addcontentsline{toc}{chapter}{Conventions Used in this Book}
+
+\markboth{Conventions Used in this Book}{Conventions Used in this Book}
+
+Please follow these conventions as you contribute to this online book:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Clear Structure and Organization:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Chapter Outlines:} Begin each chapter with an outline that
+    provides an overview of the topics covered.
+  \item
+    \textbf{Sequential Numbering:} Utilize sequential numbering for
+    chapters, sections, and subsections to facilitate easy reference.
+  \end{itemize}
+\item
+  \textbf{Accessible Language:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Glossary:} Include a glossary that defines technical terms
+    and jargon.
+  \item
+    \textbf{Consistent Terminology:} Maintain consistent use of
+    terminology throughout the book to avoid confusion.
+  \end{itemize}
+\item
+  \textbf{Learning Aids:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Diagrams and Figures:} Employ diagrams, figures, and tables
+    to visually convey complex concepts.
+  \item
+    \textbf{Sidebars:} Use sidebars for additional information,
+    anecdotes, or to provide real-world context to the theoretical
+    content.
+  \end{itemize}
+\item
+  \textbf{Interactive Elements:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Colabs and Projects:} Integrate exercises and projects at
+    the end of each chapter to encourage active learning and practical
+    application of concepts.
+  \item
+    \textbf{Case Studies:} Incorporate case studies to provide a deeper
+    understanding of how principles are applied in real-world
+    situations.
+  \end{itemize}
+\item
+  \textbf{References and Further Reading:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Bibliography:} Include a bibliography at the end of each
+    chapter for readers who wish to delve deeper into specific topics.
+  \item
+    \textbf{Citations:} Maintain a consistent style for citations,
+    adhering to recognized academic standards like APA, MLA, or Chicago.
+  \end{itemize}
+\item
+  \textbf{Supporting Materials:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Supplementary Online Resources:} Provide links to
+    supplementary online resources, such as video lectures, webinars, or
+    interactive modules.
+  \item
+    \textbf{Datasets and Code Repositories:} Share datasets and code
+    repositories for hands-on practice, particularly for sections
+    dealing with algorithms and applications.
+  \end{itemize}
+\item
+  \textbf{Feedback and Community Engagement:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Forums and Discussion Groups:} Establish forums or
+    discussion groups where readers can interact, ask questions, and
+    share knowledge.
+  \item
+    \textbf{Open Review Process:} Implement an open review process,
+    inviting feedback from the community to continuously improve the
+    content.
+  \end{itemize}
+\item
+  \textbf{Inclusivity and Accessibility:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Inclusive Language:} Utilize inclusive language that
+    respects diversity and promotes equality.
+  \item
+    \textbf{Accessible Formats:} Ensure the textbook is available in
+    accessible formats, including audio and Braille, to cater to readers
+    with disabilities.
+  \end{itemize}
+\item
+  \textbf{Index:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Comprehensive Index:} Include a comprehensive index at the
+    end of the book to help readers quickly locate specific information.
+  \end{itemize}
+\end{enumerate}
+
+Implementing these conventions can contribute to creating a textbook
+that is comprehensive, accessible, and conducive to effective learning.
+
+\part{PART I}
+
+\chapter{Introduction}\label{sec-introduction}
+
+With the development of the integrated circuit, the semiconductor
+industry is undoubtedly the most influential industry to appear in our
+society. Its impact on almost every person in the world exceeds that of
+any other industry since the beginning of the Industrial Revolution. The
+reasons for its success are as follows:
+
+\begin{itemize}
+\item
+  Exponential growth of the number of functions on a single integrated
+  circuit.
+\item
+  Exponential reduction in the cost per function.
+\item
+  Exponential growth in sales (economic importance) for approximately
+  forty years.
+\end{itemize}
+
+This growth has led to ever-increasing performance at lower prices for
+consumer electronics such as cellular phones, personal computers, audio
+players, etc. The computational power available to the individual has
+increased to the point that it has changed the way we think about
+problem solving. Communication technology including wired and wireless
+networks have fundamentally changed the way we live and communicate.
+
+The innovation responsible for these impressive results is the
+integration of electronic circuit components fabricated in silicon
+\textbf{integrated circuit} (IC) technology. Today, many of the ICs
+shaping new applications contain both analog and digital circuitry, and
+are therefore called mixed-signal integrated circuits. In mixed-signal
+ICs, the analog circuitry is typically responsible for interfacing with
+physical signals, and concerned for example with the amplification of a
+weak signal from an antenna, or driving a sound signal into a
+loudspeaker. On the other hand, digital circuitry is primarily used for
+computing, enabling powerful functions such as Fast Fourier Transforms
+or floating point multiplication.
+
+This module was written as an introduction to the analysis and design of
+analog integrated circuits in \textbf{complementary
+metal-oxide-semiconductor} (CMOS) technology. In this first chapter, we
+will motivate this subject by looking at an example of a mixed-signal IC
+and by highlighting the need for a systematic study of the fundamental
+principles and proper engineering approximations in analog design.
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, rightrule=.15mm, breakable, leftrule=.75mm, left=2mm, opacityback=0, toprule=.15mm, colback=white, coltitle=black, bottomtitle=1mm, bottomrule=.15mm, titlerule=0mm, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Chapter Objectives}, arc=.35mm]
+
+\begin{itemize}
+\item
+  Provide a motivation for the study of elementary analog integrated
+  circuits.
+\item
+  Provide a roadmap for the subjects that will be covered throughout
+  this module.
+\item
+  Review fundamental concepts for the construction of two-port circuit
+  models.
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.1.png}
+
+}
+
+\caption{\label{fig-1.1}Block diagram of a mixed-signal system.}
+
+\end{figure}%
+
+\section{Mixed-Signal Integrated
+Circuits}\label{mixed-signal-integrated-circuits}
+
+Figure~\ref{fig-1.1} shows a generic diagram of a mixed-signal system,
+incorporating a mixed-signal integrated circuit. To the left of this
+diagram are the transducers and media that represent the sources and
+sinks of the information processed by the system. Examples of input
+transducers include microphones or photodiodes used to receive
+communication signals from an optical fiber. Likewise, the output of the
+system may drive an antenna for radio-frequency communication or a
+mechanical actuator that controls the zoom of a digital camera. At the
+boundary between the media and transducers are typically signal
+conditioning circuits that translate the incoming and outgoing signals
+to the proper signal strength and physical format. For instance, an
+amplifier is usually needed to increase the strength of the receive
+signal from a radio antenna, so that it can be more easily processed by
+the subsequent system components. In most systems, the signal
+conditioning circuitry interfaces to analog-to-digital and
+digital-to-analog converters, which provide the link between analog
+quantities and their digital representation in the computing back-end of
+the system.
+
+\subsection{Example: Single-Chip Radio}\label{example-single-chip-radio}
+
+The block diagram of a modern mixed-signal integrated circuit is shown
+in Figure~\ref{fig-1.2} (see
+(\citeproc{ref-staszewski200824mm}{Staszewski et al. 2008})). This
+design incorporates most of the circuitry needed to realize a modern
+cellular phone. For instance, it contains a front-end low-noise
+amplifier (LNA) to condition the incoming antenna signal. The amplified
+signal is subsequently frequency shifted, converted into digital format
+and fed into a digital processor. Even though the block diagram in
+Figure~\ref{fig-1.2} looks quite complex, all of its elements can be
+mapped into one of the blocks of the generic diagram of
+Figure~\ref{fig-1.1}.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.2.png}
+
+}
+
+\caption{\label{fig-1.2}Block diagram of a single-chip radio
+((\citeproc{ref-staszewski200824mm}{Staszewski et al. 2008})).}
+
+\end{figure}%
+
+Figure~\ref{fig-1.3} shows the chip photo of the single-chip radio, with
+some of the system's key building blocks annotated. As evident from this
+diagram, the digital logic dominates the area of this particular IC.
+This situation is not uncommon in modern mixed-signal ICs, not least
+because the utilized digital algorithms have reached an enormous
+complexity, requiring millions or tens of millions of logic gates.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.3.png}
+
+}
+
+\caption{\label{fig-1.3}Chip photo of a single-chip radio
+((\citeproc{ref-staszewski200824mm}{Staszewski et al. 2008})).}
+
+\end{figure}%
+
+Despite the dominance of digital logic within most systems, the analog
+interface components are equally important, as they determine how and
+how much information can be communicated between the physical world and
+the digital processing backbone. In many cases, the performance of the
+signal conditioning and data conversion circuitry ultimately determines
+the performance of the overall system.
+
+\subsection{Example: Photodiode Interface
+Circuit}\label{example-photodiode-interface-circuit}
+
+Figure~\ref{fig-1.4} shows an example of a signal conditioning circuit
+that plays a critical role in fiber-optic communication systems. In such
+a system, a photodiode is used to convert light intensity to electrical
+current (\(i_{IN}\)). In order to condition the signal for further
+processing, the diode current is converted into a voltage (\(v_{OUT}\))
+by a so-called \textbf{transimpedance amplifier}. This amplifier must be
+fast enough to process the incoming light pulses, which often occur at
+frequencies of multiple gigahertz. In addition, the amplifier must obey
+certain limits on power dissipation, or the system may become
+impractical in terms of heat management or power supply requirements.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.4.png}
+
+}
+
+\caption{\label{fig-1.4}Photodetector circuit for fiber-optic
+communication.}
+
+\end{figure}%
+
+Limitations in speed and power dissipation are, in general, among the
+main concerns in the interface circuitry of mixed-signal systems. Since
+new products tend to demand higher performance, the analog designer is
+constantly concerned with the design and optimization of system-critical
+building blocks, aiming for the best possible performance that can be
+achieved within the framework of the target application and process
+technology.
+
+A specific example for the circuit realization of a transimpedance
+amplifier is shown in Figure~\ref{fig-1.5}. It consists of three
+transistor stages, each of which serves a specific purpose and design
+intent. This is true for most amplifier circuits; even though the full
+schematic of a particular realization may be com- plex, it can usually
+be broken up into smaller sub-blocks that are more easily understood.
+Specifi- cally, for the amplifier of Figure~\ref{fig-1.5}, the
+experienced designer will recognize that the circuit consists of a
+cascade connection of a \textbf{common-gate}, \textbf{common-source},
+and \textbf{common-drain} stage. These sub-blocks form the basis for a
+large number of analog circuits, and can be viewed as the ``atoms'' or
+fundamental building blocks of analog design. In this module, you will
+learn to analyze these blocks from first principles, and to reuse the
+gained knowledge for the design of more complex circuits. The circuit of
+Figure~\ref{fig-1.5} will be analyzed in detail in Chapter 6 of this
+module, building upon the principles covered in Chapters 2--5.
+
+\section{Managing Complexity}\label{managing-complexity}
+
+As evident from the example of Section 1-1-1, modern integrated circuits
+are highly complex and require a hierarchical approach in design and
+analysis. That is, a modern integrated circuit is far too complex to be
+fully understood and analyzed in a single sheet schematic at the
+transistor level. Typically, a mixed-signal IC is represented by a block
+diagram as the one shown in Figure~\ref{fig-1.2}. At the level of this
+description, suitable specifications are derived for each block, which
+may itself contain several sub-blocks. The blocks and sub-blocks are
+then designed and optimized until they meet the desired target
+specifications.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.5.png}
+
+}
+
+\caption{\label{fig-1.5}Example realization of a transimpedance
+amplifier.}
+
+\end{figure}%
+
+Figure~\ref{fig-1.6} illustrates examples of the various levels of
+abstraction that come into play in the design of a modern integrated
+circuit. At the highest level, the constituent elements can be
+partitioned into analog and digital blocks. An example of a high-level
+analog block is an analog-to-digital converter, whereas a microprocessor
+is an example of a large digital block. These blocks themselves contain
+smaller functional units, as, for example, operational amplifiers in the
+case of an analog-to-digital converter. The operational amplifiers
+themselves contain the aforementioned elementary transistor stages,
+which are the main subject of this module.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.6.png}
+
+}
+
+\caption{\label{fig-1.6}Levels of abstraction in integrated circuit
+design.}
+
+\end{figure}%
+
+Interestingly, even at the level of elementary transistor stages, is
+often not possible to work with a perfect model or description of the
+circuit. This is particularly so because the physical effects in the
+constituent transistors are highly complex and often impossible to
+capture perfectly with a tractable set of equations for hand analysis.
+Therefore, making proper engineering approximations in transistor
+modeling is an important aspect in maintaining a systematic design
+methodology. For this particular reason, the presentation in this module
+follows a ``just-in-time'' approach for the modeling of transistor
+behavior. Rather than deriving a complete transistor model in an
+isolated chapter (as done in most texts), we begin with only the basic
+device properties and increase complexity throughout the module upon
+demand, and where needed to gain further insight and accuracy. With this
+approach, the reader learns to appreciate the complexity of a refined
+model, and will be able to assess and track potential limitations of
+working with simplified models.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.7.png}
+
+}
+
+\caption{\label{fig-1.7}Two-port model of the transimpedance amplifier
+circuit in Figure~\ref{fig-1.5}.}
+
+\end{figure}%
+
+\section{Two-Port Abstraction for
+Amplifiers}\label{two-port-abstraction-for-amplifiers}
+
+High-level system block diagrams, such as Figure~\ref{fig-1.2} , are
+typically drawn as unidirectional flowcharts and do not capture details
+about the electrical behavior of each connection port and how certain
+blocks may interact once they are connected. Unfortunately, electrical
+signals are not unidirectional, and connecting two blocks always means
+that there is some level of interaction through the voltages and
+currents at the connection points.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.8.png}
+
+}
+
+\caption{\label{fig-1.8}General amplifier two-port.}
+
+\end{figure}%
+
+The commonly used linear two-port modeling abstraction for amplifiers
+and amplifier stages allows the designer to take these effects into
+account while maintaining a high level of abstraction. For instance, the
+circuit of Figure~\ref{fig-1.5} can be approximately modeled as shown in
+Figure~\ref{fig-1.7} (the details on obtaining this model are discussed
+later in this module). Each stage of the overall amplifier is
+represented via a simplified circuit model that captures its essential
+features. Once this model is created, the interaction among stages can
+be analyzed at this high level of abstraction, without requiring
+detailed insight on how each stage is implemented. The two-port modeling
+approach is particularly useful in the design of amplifiers, as it can
+help shape the thought process on how the various stages should be
+configured to optimize performance. In the following subsections, we
+will review some of the basic concepts of amplifier two-port modeling
+used in this module.
+
+\subsection{Amplifier Types}\label{amplifier-types}
+
+In this module, we model amplifier circuits as blocks that have an input
+and output port, where the term ``port'' refers to a pair of terminals.
+For each port, we can define input and output currents and voltages as
+shown in Figure~\ref{fig-1.8}. Depending on the intended function, we
+distinguish between the four possible amplifier types listed in Table
+1-1. For example, an amplifier that takes an input current and amplifies
+this current to produce a proportional output voltage is called a
+transresistance amplifier. In this context, it is important to emphasize
+that in a general practical amplifier circuit, the input and output
+ports will always carry both nonzero voltages and currents, and there
+exist transfer functions between all possible combinations of
+input/output variables. What truly defines the type of an amplifier is
+what the circuit designer deems as the main quantities of interest in
+the amplifier's application.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3973}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2877}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3014}}@{}}
+\caption{Amplifier types.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Amplfier Type}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Input Quantity}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Output Quantity}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Amplfier Type}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Input Quantity}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Output Quantity}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Voltage Amplifier & Voltage & Voltage \\
+Current Amplifier & Current & Current \\
+Transconductance Amplifier & Voltage & Current \\
+Transresistance Amplifier & Current & Voltage \\
+\end{longtable}
+
+Now, in order to model the inner workings of each amplifier type, we can
+invoke the four corresponding two-port amplifier models shown in
+Figure~\ref{fig-1.9}. Each amplifier model has an input and output
+resistance (or more generally, a frequency dependent impedance) and a
+controlled source to model the amplification.
+
+\begin{itemize}
+\item
+  In the \textbf{voltage amplifier model}, the controlled source is a
+  voltage-controlled voltage source. Ideally, the input resistance is
+  infinite (open circuit, no current flow). The ideal output resistance
+  is zero (ideal voltage source).
+\item
+  The \textbf{current amplifier model} has a current-controlled current
+  source. Ideally, the input resistance is zero (short circuit, no
+  voltage across the input port) and the output resistance is infinite
+  (ideal current source).
+\item
+  The \textbf{transconductance amplifier model} has a voltage-controlled
+  current source. Ideally, the input resistance is infinite (open
+  circuit, no current flow). The ideal output resistance is also
+  infinite (ideal current source).
+\item
+  The \textbf{transresistance or transimpedance\footnote{The term
+    transimpedance is sometimes used to refer to an amplifier that is
+    primarily meant to realize a transresistance. Referring to
+    ``impedance'' highlights the fact that the transfer function will
+    usually be frequency-dependent.} amplifier model} has a
+  current-controlled voltage source. Ideally, the input resistance is
+  zero (short circuit, no voltage across the input port). The ideal
+  output resistance is also zero (ideal voltage source).
+\end{itemize}
+
+From these four models and their ideal behavior, we note that the
+two-ports containing a voltage-controlled source should ideally have
+large input resistance (\(R_{in}\)). This minimizes the signal loss due
+to resistive voltage division between the source voltage (\(v_s\)) and
+the control voltage (\(v_{in}\)). In contrast, the two-ports that use a
+current-controlled source should have small input resistance to minimize
+the signal loss due to current division between the source current
+(\(i_s\)) and the control current (\(i_{in}\)). In this context,
+``large'' and ``small'' refer to the value of \(R_{in}\) relative to the
+source resistance (\(R_s\)).
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.9.png}
+
+}
+
+\caption{\label{fig-1.9}Two-port amplifier models with input source and
+load: (a) voltage amplifier, (b) current amplifier, (c) transconductance
+amplifier, and (d) transresistance amplifier.}
+
+\end{figure}%
+
+On the output side, if the variable of interest is a voltage, the output
+resistance (\(R_{out}\)) should be small so that only a small amount of
+the amplified voltage is lost through the division with the load
+(\(R_L\)). Conversely, for a current output, the output resistance
+should be large to minimize current division losses. Again, ``large''
+and ``small'' are taken as relative measures comparing Rout to \(R_L\).
+
+Consider for example the voltage amplifier of Figure~\ref{fig-1.9}(a).
+To calculate the transfer function of the overall circuit
+(\(v_{out}\)/\(v_s\)), the input voltage, including its source
+resistance, is connected to the input of the two-port model and the load
+resistance is connected to the output. The full circuit is shown in
+Figure~\ref{fig-1.10}.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.10.png}
+
+}
+
+\caption{\label{fig-1.10}Voltage amplifier with connected source and
+load resistances.}
+
+\end{figure}%
+
+Applying the voltage divider rule at the input and output of the circuit
+gives
+
+\begin{equation}\phantomsection\label{eq-1.1}{
+\frac{v_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot A_v \cdot \Bigl(\frac{v_{out}}{v_x}\Bigr) = \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot A_v \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+}\end{equation}
+
+As we can see from this expression, the overall voltage gain is
+maximized when the amplifier has a large input resistance (relative to
+\(R_s\)) and a small output resistance (relative to \(R_L\)). For the
+ideal case of infinite input resistance and zero output resistance,
+\(v_{out}\)/\(v_s\) becomes equal to \(A_v\).
+
+For the sake of compact notation, we will often want to use a symbol for
+the overall circuit gain. The notation used in this module uses primed
+variables to distinguish between the gain of the controlled source and
+the gain of the overall amplifier circuit. For example, for the
+above-discussed voltage amplifier we define \(A'_v\) = \(v_{out}\) ⁄
+\(v_s\). This notation is meant to emphasize the connection between the
+two symbols. \(A'_v\) is usually smaller than \(A_v\), but can approach
+\(A_v\) for ideal source and load configurations.
+
+\textbf{Example 1-1: Transfer Function Transconductance Amplifier.}
+
+For the transconductance amplifier circuit in Figure~\ref{fig-ex-1.1},
+calculate the overall transconductance \(G'_m = i_{out} ⁄ v_s\).
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure-ex-1.1.png}
+
+}
+
+\caption{\label{fig-ex-1.1}\textbf{Figure Ex 1-1}}
+
+\end{figure}%
+
+\textbf{SOLUTION}
+
+Applying the voltage divider rule at the input and the current divider
+rule at the output yields the following result:
+
+\[
+G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{i_{out}}{i_x}\Bigr) =  \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+\]
+
+Thus, the overall transconductance gain is maximized when the amplifier
+has a large input resistance (relative to \(R_s\)) and a large output
+resistance (relative to \(R_L\)). For the ideal case of infinite input
+and output resistances, \(G'_m\) becomes equal to \(G_m\).
+
+As a final remark for this sub-section, it is important to recognize
+that all of the models in Figure~\ref{fig-1.9} can be used
+interchangeability to describe the exact same electrical behavior (see
+Problem P1-1). For instance, a voltage amplifier model can be converted
+into a transconductance amplifier model by applying a Thevénin to Norton
+transformation for the controlled source.
+
+A corollary to this equivalence is that we can for example use a
+transconductance amplifier model to describe a voltage amplifier
+circuit. This is illustrated through the circuit of
+Figure~\ref{fig-1.10}, which is electrically equivalent to that of
+Figure~\ref{fig-1.10} (see Problem P1-2). Note that the output is taken
+as the voltage across the output port instead of the output current;
+this indicates that the circuit is viewed as a voltage amplifier. Just
+as in the original circuit of Figure~\ref{fig-1.10}, we require a large
+input resistance and small output resistance for this circuit to
+maximize the overall voltage gain.
+
+The choice of amplifier model depends on several factors. At first
+glance, it seems natural to model each amplifier type using its
+``native'' model that directly corresponds to the intended function. For
+example, we could always describe a voltage amplifier using the
+corresponding voltage amplifier model that contains a voltage controlled
+voltage source. However, as we shall see throughout this module, it is
+sometimes more convenient to align the amplifier model with the physical
+amplification mechanism or a structural feature of the underlying
+transistor circuit. For instance, the common-source voltage amplifier
+discussed in Chapter 2 naturally invokes a transconductance-based model
+due to the physical model of the employed transistor.
+
+\subsection{Unilateral versus Bilateral
+Two-Ports}\label{unilateral-versus-bilateral-two-ports}
+
+All of the two-port models shown in Figure~\ref{fig-1.9} are called
+\textbf{unilateral}, because they can only propagate a signal from the
+input port to the output port and not the other way around. For
+instance, injecting a current into the output port of the current
+amplifier of Figure~\ref{fig-1.9}(b) will not induce a current at the
+input port. Unfortunately, many practical transistor circuits are not
+unilateral, and exhibit \textbf{bilateral} behavior when analyzed in
+detail, and especially at high frequencies.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.11.png}
+
+}
+
+\caption{\label{fig-1.11}Voltage amplifier with an underlying
+transconductance amplifier model}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.12.png}
+
+}
+
+\caption{\label{fig-1.12}(a) Example of a bilateral current amplifier.
+(b) Corresponding bilateral current amplifier two-port model.}
+
+\end{figure}%
+
+An example of a bilateral current amplifier is shown
+Figure~\ref{fig-1.12}(a). Note that in this circuit, resistor \(R_2\)
+couples the input and output networks and it can therefore transfer
+currents in both directions. Consequently, the unilateral model of
+Figure~\ref{fig-1.9}(b) cannot perfectly represent this circuit. When it
+is desired to capture the bilateral behavior, the two-port model in
+Figure~\ref{fig-1.12}(b) could be employed in principle. Here, the
+controlled source Air models the reverse current transfer from the
+output back to the input. Alternatively, one could employ other
+bilateral and more general two-port models based on admittance
+parameters (\(Y\)), impedance parameters (\(Z\)), and hybrid or
+inverse-hybrid parameters (\(H\) or \(G\)); see advanced circuit design
+texts such as (\citeproc{ref-gray2009analysis}{Gray et al. 2009}). These
+models are particularly useful when reverse transmission (i.e., feedback
+from the output to the input) is incorporated in the circuit as part of
+the intended design.
+
+There are two reasons why we will work exclusively with unilateral
+two-port approximations in this module. First, the circuits considered
+are designed primarily to implement forward gain rather than reverse
+gain; feedback circuits are not treated in this module. For example,
+referring to the model of Figure~\ref{fig-1.12}(b), the reverse gain Air
+will be negligibly small in any current amplifier circuit that we will
+consider. Second, a clear drawback of working with bilateral two-port
+models would be a significant increase in analysis complexity. As we
+have seen in Example 1-1, the overall transfer function of a unilateral
+two-port circuit can be written by applying simple voltage and current
+divider rules. This also extends to cascade connections of multiple
+two-ports. For example, the overall transfer function of the circuit in
+Figure~\ref{fig-1.7} is easily written by inspection, without requiring
+extensive algebra. With reverse transmission included, the transfer
+function analysis will generally require solving a linear system of
+equations. In light of the fact that we do not intend to design circuits
+in this module that have significant reverse transmission, this increase
+in complexity is not welcome, and would also hinder us from developing
+intuition from inspection-driven analysis.
+
+\subsection{Construction of Unilateral Two-Port
+Models}\label{construction-of-unilateral-two-port-models}
+
+We will now describe the general procedures to calculate the controlled
+sources, as well as the input and output resistances, for the unilateral
+two-port models of Figure~\ref{fig-1.9}. The approach is based on
+applying test voltages and currents to find the desired model
+parameters.
+
+The most important parameter of any amplifier circuit is its gain. To
+identify the gain parameters for the models of
+Figure~\ref{fig-1.9}(a)-(d), we apply the tests shown in
+Figure~\ref{fig-1.13}(a)-(d), respectively.
+
+\begin{itemize}
+\item
+  To calculate the gain term \(A_v\) of a voltage amplifier model, we
+  apply a test voltage at the input with zero source resistance and
+  measure the open-circuit output voltage. \(A_v = v_{oc} / v_t\) is
+  therefore also called the \textbf{open-circuit voltage gain}.
+\item
+  To calculate the gain term \(A_i\) of a current amplifier model, we
+  apply a test current at the input with infinite source resistance and
+  measure the short-circuit output current. \(A_i = i_{sc} / i_t\) is
+  therefore also called the \textbf{short-circuit current gain}.
+\item
+  To calculate the gain term \(G_m\) of a transconductance amplifier
+  model, we apply a test voltage at the input with zero source
+  resistance and measure the short-circuit output current to find
+  \(G_m = i_{sc}/v_t\).
+\item
+  To calculate the gain term \(R_m\) of a transresistance amplifier
+  model, we apply a test current at the input with infinite source
+  resistance and measure the open-circuit output voltage to find
+  \(R_m = v_{oc} / v_{it}\).
+\end{itemize}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.13.png}
+
+}
+
+\caption{\label{fig-1.13}Method to calculate two-port amplifier model
+parameters: (a) voltage gain \(A_v\), (b) current gain \(A_i\), (c)
+transconductance \(G_m\), (d) transresistance \(R_m\), (e) input
+resistance \(R_in\), and (f) output resistance \(R_out\).}
+
+\end{figure}%
+
+The rationale behind these tests can be understood by considering, for
+example, the case of the voltage amplifier model of
+Figure~\ref{fig-1.9}(a). When driven with an ideal voltage source, the
+effect of any resistance at the input port is eliminated, and the
+controlled source is directly stimulated by the applied test source
+(without any voltage division). Likewise, by measuring the resulting
+output voltage open-circuited, any resistance in series with the
+controlled source has no effect and the measurement therefore accurately
+extracts the parameter \(A_v\). Similar explanations apply to the test
+cases for the remaining amplifier models.
+
+The test setup for extracting the input and output resistances for all
+amplifier models is shown in Figure~\ref{fig-1.13}(e), and (f),
+respectively.
+
+\begin{itemize}
+\item
+  To calculate the \textbf{input resistance} \(R_{in}\) we apply a test
+  voltage and measure the current coming from the test source, or apply
+  a test current and mea- sure the voltage across the test source. In
+  this test, the load resistance (\(R_L\)) must be connected to the
+  output port as shown in Figure~\ref{fig-1.13}(e).
+\item
+  To calculate the \textbf{output resistance} \(R_out\), we apply either
+  a test voltage or a test current source at the output port and measure
+  the respective current or voltage from the source. Here, the input
+  source must be set equal to zero. This means that input voltage
+  sources are shorted and input current sources are open-circuited. Only
+  the source resistance (\(R_S\)) is left across the input terminals as
+  shown in Figure~\ref{fig-1.13}(f).
+\end{itemize}
+
+The above procedures extract the input and output resistances perfectly
+and without any approximations, even if the circuit is bilateral. As we
+shall see through the examples below, \(R_{in}\) and \(R_{out}\) do not
+depend on \(R_L\) and \(R_S\), respectively, in a perfectly unilateral
+amplifier. However, this is not the case in a bilateral amplifier, and
+therefore the general procedure includes \(R_L\) and \(R_S\) in the test
+setup.
+
+In summary, the above procedures for measuring unilateral two-port model
+parameters aim at finding the best possible unilateral representation of
+an arbitrary amplifier circuit, which itself may or may not be
+unilateral. The obtained models are approximate when the amplifier is
+bilateral, since they do not include a controlled source that captures
+reverse transmission from the output back to the input. In most cases
+considered in this module, the reverse transmission term is negligible.
+Exceptions will be highlighted and treated as appropriate.
+
+\textbf{Example 1-2: Two-Port Model Calculations for a Unilateral
+Amplifier}
+
+For the transconductance amplifier in Figure~\ref{fig-ex-1.2a},
+calculate the following two-port model parameters: the transconductance
+\(G_m\), the input resistance \(R_{in}\), and the output resistance
+\(R_{out}\). Also, compute the overall transfer function
+\(G'_m = i_{out} ⁄ v_s\).
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure-ex-1.2a.png}
+
+}
+
+\caption{\label{fig-ex-1.2a}Figure Ex1-2A}
+
+\end{figure}%
+
+\textbf{SOLUTION}
+
+To find the transconductance, we short the output port and apply an
+ideal test voltage source (\(v_t\)) at the input (see
+Figure~\ref{fig-ex-1.2a}). From this circuit, we see that
+
+\[
+G_m = \frac{i_{sc}}{v_t} = \frac{g_m v_x \cdot \frac{R_3}{R_3 + R_4}}{v_t} = \frac{g_m v_x \cdot \frac{R_2}{R_1 + R_2} \cdot \frac{R_3}{R_3 + R_4}}{v_t} = g_m \cdot \frac{R_2}{R_1 + R_2} \cdot \frac{R_3}{R_3 + R_4}
+\]
+
+Next, to find \(R_in\), we apply a test voltage at the input and connect
+the load resistance \(R_L\) at the output (Figure~\ref{fig-ex-1.2b}).
+From this circuit, we find that the input resistance is simply the
+series connection of \(R_1\) and \(R_2\), i.e., \(R_{in} = R_1 + R_2\).
+Note that the output network does not influence this result.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure-ex-1.2b.png}
+
+}
+
+\caption{\label{fig-ex-1.2b}Figure Ex1-2B}
+
+\end{figure}%
+
+Finally, to find \(R_{out}\), we apply a test voltage at the output and
+connect the source resistance \(R_S\) across the input port (the source
+\(v_s\) is replaced by a short), (see Figure~\ref{fig-ex-1.2b}(c)). In
+the resulting circuit, \(v_x\) must be zero, because no current is
+flowing in the input network. Thus, the controlled source carries no
+current and we conclude that \(R_{out} = R_3 + R_4\).
+
+In order to compute the transfer function of the complete circuit, we
+can reuse the result obtained in Example 1-1.
+
+\[
+G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+\]
+
+Substituting \(G_m\), \(R_{in}\), and \(R_{out}\) from the above
+calculation yields the final result.
+
+\[
+G'_m = \frac{i_{out}}{v_s} = \frac{g_m R_2 R_3}{(R_1 + R_2 + R_S)(R_L + R_3 + R_4)}
+\]
+
+In the preceding example, we have seen that the source and load
+resistances have no effect on the extracted two-port parameters. In the
+following example, we will investigate a bilateral circuit to show that
+in general, the input and output resistances depend on \(R_S\) and
+\(R_L\), which must therefore always be included in the general two-port
+modeling calculations.
+
+\textbf{Example 1-3: Two-Port Model Calculations for a Bilateral
+Amplifier}
+
+For the current amplifier in Figure~\ref{fig-1.12}(a), calculate the
+following unilateral two-port model parameters: the current gain
+\(A_i\), the input resistance \(R_in\), and the output resistance
+\(R_out\). Also, compute the overall transfer function \(i_{out} / v_s\)
+using the obtained unilateral two-port model. Compare the result to a
+direct KCL-based analysis of the transfer function. Assume that the
+circuit is driven by a current source with resistance \(R_S\) and loaded
+by a resistance \(R_L\). For algebraic simplicity, assume \$R\_1 = 1 /
+g\_m \$ (this case corresponds to the common-gate amplifier circuit
+covered in Chapter 4).
+
+\textbf{SOLUTION}
+
+To find the current gain Ai, we short the output port and apply an ideal
+test current source (\(i_t\)) at the input (see
+Figure~\ref{fig-ex-1.3}(a)). From this circuit, we see that
+
+\[
+v_{in} = \Bigl( g_m + \frac{1}{R_2} \Bigr)^{-1} \cdot i_t
+\]
+
+and
+
+\[
+i_{sc} = - \Bigl( g_m + \frac{1}{R_2} \Bigr) \cdot v_{in}
+\]
+
+Thus, Ai = isc/it = --1.
+
+Next, to find \(R_{in}\), we apply a test voltage at the input and
+connect the load resistance \(R_L\) at the output
+(Figure~\ref{fig-ex-1.3}(b)). From this circuit, we note that the input
+resistance is not easily identified by inspection. Hence we write KCL
+for the two nodes of the circuit (\(v_t\) and \(v_out\)).
+
+\[
+0 = -i_t + g_m v_t + \frac{v_t - v_out}{R_2}
+\]
+
+\[
+0 = - g_m v_t + \frac{v_{out}}{R_L} + \frac{v_t - v_out}{R_2}
+\]
+
+Solving this system of equations yields
+
+\[
+R_{in} = \frac{v_t}{i_t} = \frac{R_2 + R_L}{1 + g_m R_2} = \frac{1 + \frac{R_L}{R_2}}{g_m + \frac{1}{R_2}}
+\]
+
+Note from this result that \(R_in\) depends on \(R_L\), as mentioned
+previously; this dependency stems from the bilateral structure of the
+circuit. Also note that Rin approaches \(1 / g_m\) when \(R_2\) is large
+compared to \(R_L\) and \$ 1 / g\_m\$. We will revisit this important
+point in Chapter 4, in the context of a common-gate amplifier circuit.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure-ex-1.3.png}
+
+}
+
+\caption{\label{fig-ex-1.3}Figure Ex1-3}
+
+\end{figure}%
+
+Now, to find \(R_{out}\), we apply a test voltage at the output and
+connect the source resistance \(R_S\) across the input port
+Figure~\ref{fig-ex-1.3}. Again, we must write KCL at the two circuit
+nodes and solve the resulting system of equations. This yields
+
+\[
+R_{out} = \frac{v_t}{i_t} = R_2 R_S + g_m R_2 R_S
+\]
+
+Again, note that \(R_out\) is a function of \(R_S\); this is the case
+for any bilateral circuit.
+
+Finally, to compute the transfer function based on the obtained
+unilateral model, we consider the circuit shown in
+Figure~\ref{fig-ex-1.3}(d). By inspection, we see that
+
+\[
+A_i' \frac{i_{out}}{i_s} = \Bigl( \frac{R_S}{R_{in} + R_S} \Bigr) A_i \frac{R_{out}}{R_L + R_{out}}
+\]
+
+Substituting \(A_i\), \(R_{in}\), and \(R_{out}\) from the above
+calculation into this expression yields
+
+\[
+A_{i, Two-Port}' = \frac{i_{out}}{i_s} = \frac{R_S(1 + g_m R_2)(R_2 + R_S + g_m R_2 R_S)}{(R_L + R_2 + R_S + g_m R_2 R_S)^2}
+\]
+
+We now wish to compare this result to the accurate transfer function of
+the circuit, obtained by direct calculation and without approximating
+the circuit as a unilateral two-port. For this purpose, we consider the
+full circuit shown in Figure~\ref{fig-ex-1.3}(e) and write KCL for its
+two nodes.
+
+\[
+0 = - i_s + g_m v_in + \frac{v_{in}}{R_S} + \frac{v_{in} - v_{out}}{R_2}
+\]
+
+\[
+0 = -g_m v_{in} + \frac{v_{out}}{R_L} + \frac{v_{out} - v_{in}}{R_2}
+\]
+
+Solving this system of equations for \(v_{out}\) and substituting
+\(i_{out} = - v_{out} / R_L\) yields
+
+\[
+A_{i, Exact}' = \frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} = 
+\frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
+\]
+
+The discrepancy factor between the two results is given by
+
+\[
+\frac{A_{i, Two-Port}'}{A_{i, Exact}'} = \frac{R_2 + R_S + g_m R_2 R_S}{R_L + R_2 + R_S + g_m R_2 R_S} = \frac{1 + R_S \Bigl(\frac{1}{R_2} + g_m}{1 + \frac{R_L}{R_2} + R_S \Bigl(\frac{1}{R_2} + g_m \Bigr)}
+\]
+
+From this result, we see that the discrepancy factor approaches unity
+(no error) when \(R_2\) is much larger than \(R_L\), a condition that is
+often satisfied in practice (the ideal load for a current amplifier is a
+short circuit). In this case, the unilateral two-port model will
+accurately describe the behavior of the circuit.
+
+The outcome of the above example captures the main spirit in which we
+justify relying on unilateral two-port models in this module. Even
+though the considered amplifier is strictly speaking bilateral, a
+unilateral model describes its behavior to within the desired
+engineering accuracy, provided that reason- able boundary conditions
+hold.
+
+\section{Integrated Circuit Design versus Printed Circuit Board
+Design}\label{integrated-circuit-design-versus-printed-circuit-board-design}
+
+In the design of analog circuits, the underlying technology has a
+significant impact on the choice of architecture, because it tends to
+restrict the availability and specification range of the underlying
+active and passive components. For instance, a designer working with
+discrete components on a printed circuit board may be subjected to the
+following constraints:
+
+\begin{itemize}
+\item
+  Limit the component count below 100 elements to achieve a small board
+  area.
+\item
+  Resistors can be chosen in the range of 1Ω--10MΩ.
+\item
+  Capacitors can be chosen in the range of 1pF--10,000 μF.
+\item
+  The resistor and capacitor values match to within 1--10\%.
+\item
+  The available (discrete) bipolar junction transistors match to within
+  20\% in their critical parameters.
+\end{itemize}
+
+In contrast, the designer of a CMOS system-on-chip may face the
+constraints summarized below:
+
+\begin{itemize}
+\item
+  Avoid using resistors; use as many MOSFET transistors as needed
+  (within reasonable limits, on the order of hundreds to several
+  thousands) to realize the best possible circuit implementation.
+\item
+  Capacitors can be chosen in the range of 10 fF--100 pF.
+\item
+  The critical parameters in the MOSFET transistors be made to match to
+  within 1\%, but vary by more than 30\% for different fabrication runs.
+\item
+  Capacitors of similar size can match to within 0.1\%, but vary by more
+  than 10\% for different fabrication runs.
+\end{itemize}
+
+As a consequence of the vastly different constraints that apply to the
+design of analog circuits in CMOS technology, the resulting practical
+and preferred circuit architectures differ substantially from the ones
+that would be used in a printed circuit board design. For example, a
+discrete voltage amplifier may utilize large AC coupling capacitors to
+simplify and decouple the biasing of the individual gain stages (see
+example in Figure~\ref{fig-1.14}). In contrast, it is typically not
+possible to use AC coupling techniques (except for very high-frequency
+designs) in integrated circuits, primarily due to the restriction on
+maximum capacitor size.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure1.14.png}
+
+}
+
+\caption{\label{fig-1.14}Example of a discrete amplifier circuit using
+bipolar junction transistors (BJTs).}
+
+\end{figure}%
+
+The material covered in this module is primarily concerned with analog
+integrated circuit design. While this choice does not affect many of the
+key principles used in the analysis and the discussed circuits, it does
+affect the architectural choices made in arriving at a practical design.
+For instance, large AC coupling capacitors are not used throughout the
+discussion. Also, where appropriate, we will invoke certain assumptions
+about the typical matching of component parameters in CMOS to eliminate
+impractical design choices.
+
+\section{Prerequisites and Advanced
+Material}\label{prerequisites-and-advanced-material}
+
+The reader of this module is expected to be familiar with the basis
+concepts of linear circuit analysis (see
+(\citeproc{ref-ulaby2018circuit}{Ulaby and Maharbiz 2013})), including
+
+\begin{itemize}
+\item
+  Passive components (resistors, capacitors)
+\item
+  Kirchhoff's voltage and current laws (KVL and KCL)
+\item
+  Independent and dependent voltage and current sources; Thevénin and
+  Norton representation of controlled sources
+\item
+  Two-port representation of circuits; calculation of port resistances
+  and frequency dependent impedances
+\item
+  Manipulation of complex variables and numbers
+\item
+  Phasor analysis and Laplace domain representation of passive circuit
+  elements
+\item
+  Bode plots
+\end{itemize}
+
+The derivations of device models in this module assume familiarity with
+basic solid-state physics and electrostatics as treated in introductory
+texts on solid-state device physics (see
+(\citeproc{ref-robert2003pierret}{Robert 2003})). A few sections of this
+module are marked with an asterisk (*) to indicate advanced material
+that may in some cases go beyond the learning goals of an introductory
+course. These sections can be skipped at the instructor's discretion
+without affecting the overall flow and context.
+
+\section{Notation}\label{notation}
+
+This module follows the notation for signal variables as standardized by
+the IEEE. Total signals are composed of the sum of DC quantities and
+small signals. For example, a total input voltage \(v_{IN}\) is the sum
+of a DC input voltage \(V_{IN}\) and a small-signal voltage \(v_{in}\).
+The notation is summarized below.
+
+\begin{itemize}
+\item
+  Total quantity has a lowercase variable name and uppercase subscript
+\item
+  DC quantity has an uppercase variable name and uppercase subscript
+\item
+  Small-signal quantity has a lowercase variable name and lowercase
+  subscript
+\end{itemize}
+
+\chapter{Summary}\label{summary}
+
+This chapter offered a brief motivation for the topics covered in this
+module, which focuses on the analysis and design of elementary amplifier
+stages in CMOS technology. These elementary stages can be viewed as the
+``atoms'' of analog circuit design and a thorough understanding of the
+blocks is a necessary prerequisite for the design of advanced analog
+circuits design, as for instance in the context of large
+systems-on-chip. At all levels of circuit design, complexity is managed
+using hierarchical abstraction and model simplification using proper
+engineering approximations. The unilateral two-port models reviewed in
+Section 1-3 and used throughout this module, are an example of such
+abstractions.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure-p1-1.png}
+
+}
+
+\caption{\label{fig-p1-1}Figure P1-1}
+
+\end{figure}%
+
+\chapter{Problems}\label{problems}
+
+\textbf{P1.1} Given the amplifier circuit in Figure~\ref{fig-p1-1} (a)
+Find the input and output resistance. (b) Construct an equivalent
+circuit using a voltage amplifier two-port model and determine all model
+parameters symbolically. (c) Repeat part (b) for a current amplifier
+model. (d) Repeat part (b) for a transconductance amplifier model. (e)
+Repeat part (b) for a transresistance amplifier model.
+
+\textbf{P1.2} Convince yourself that the circuits of
+Figure~\ref{fig-1.10} and Figure~\ref{fig-1.11} are equivalent by
+showing sym- bolically that both circuits have the same overall voltage
+gain \(A'_v = v_{out} ⁄ v_s\).
+
+\textbf{P1.3} You are given an input voltage source with a source
+resistance, \(R_S\). (a) Use the unilateral voltage amplifier two-port
+model found in P1.1 to find the overall voltage gain when the amplifier
+is driving a load resistor RL . (b) Specify whether the resistances
+\(r_1\), \(r_i\), \(r_o\), \(r_2\) in the small signal model should be
+increased, be decreased, or remain the same to improve the overall
+voltage gain.
+
+\textbf{P1.4} You are given an input current source with a source
+resistance, \(R_S\). (a) Use the unilateral current amplifier two-port
+model found in P1.1 to find the overall current gain when the amplifier
+is driving a load resistor \(R_L\). (b) Specify whether the resistances
+\(r_1\), \(r_i\), \(r_o\), \(r_2\) in the small-signal model should be
+increased, be decreased, or remain the same to improve the overall
+current gain.
+
+\textbf{P1.5} Given the circuit model in Figure~\ref{fig-p1-5} for an
+amplifier circuit (a) Find the input and output resistance. (b)
+Construct a two-port model for a unilateral voltage amplifier. (c)
+Construct a two-port model for a unilateral current amplifier. (d)
+Construct a two-port model for a unilateral transconductance amplifier.
+(e) Construct a two-port model for a unilateral transresistance
+amplifier.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{contents/chapter1/images/png/figure-p1-5.png}
+
+}
+
+\caption{\label{fig-p1-5}Figure P1-5}
+
+\end{figure}%
+
+\textbf{P1.6} Consider the two-port model of a voltage amplifier as
+shown in Figure~\ref{fig-1.9}(a) with the following parameters: \(A_v\)
+= 10, \(R_{in}\) = 5 kΩ, and \(R_{out}\) = 100 Ω.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Draw the two-port model for a transresistance amplifier by conversion
+  from the voltage amplifier model.
+\item
+  Draw the two-port model for a transconductance amplifier by conversion
+  from the voltage amplifier model.
+\item
+  Draw the two-port model for a current amplifier by conversion from the
+  voltage amplifier model.
+\end{enumerate}
+
+\textbf{P1.7} Derive an expression for the transresistance
+\(v_{out} / i_{in}\) for the circuit of Figure~\ref{fig-1.7} using the
+following parameters: \(A_{i1}\) = 1, \(G_{m2}\) = 10 mS, \(A_{v3}\) =
+0.8, \(R_in1\) = 50 Ω, \(R_{out1}\) = 500 Ω, \(R_{out2}\) = 1 kΩ, and
+\(R_{out3}\) = 100 Ω. Using this result, lump the entire circuit into a
+single transresistance amplifier as shown in Figure~\ref{fig-1.9}(d).
+Draw the resulting model, including \(R_{in}\) and \(R_{out}\).
+
+\textbf{P1.8} Consider the amplifier circuit of Figure~\ref{fig-1.12}(a)
+with \(R_1 = 1/g_m\) = 1 kΩ and R2 = 100 kΩ. Compute all component
+values for the bilateral two-port current amplifier model of
+Figure~\ref{fig-1.12}(b). Note that \(A_{if}\), \(R_{in}\), and
+\(R_out\) can be described as explained in Section 1-3. Similar to
+\(A_{if}\), \(A_{ir}\) is found by short-circuiting the input port and
+by injecting a test current into the output port. Compare the relative
+magnitude of \(A_{if}\) and \(A_{ir}\).
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-gray2009analysis}
+Gray, Paul R, Paul J Hurst, Stephen H Lewis, and Robert G Meyer. 2009.
+\emph{Analysis and Design of Analog Integrated Circuits}. John Wiley \&
+Sons.
+
+\bibitem[\citeproctext]{ref-robert2003pierret}
+Robert, F. 2003. {``Pierret: Semiconductor Device Fundamentals.''}
+Reading, MA: Addison-Wesley.
+
+\bibitem[\citeproctext]{ref-staszewski200824mm}
+Staszewski, Robert Bogdan, Dirk Leipold, O Eliezer, Mitch Entezari,
+Khurram Muhammad, Imran Bashir, C-M Hung, et al. 2008. {``A 24mm 2
+Quad-Band Single-Chip GSM Radio with Transmitter Calibration in 90nm
+Digital CMOS.''} In \emph{2008 IEEE International Solid-State Circuits
+Conference-Digest of Technical Papers}, 208--607. IEEE.
+
+\bibitem[\citeproctext]{ref-ulaby2018circuit}
+Ulaby, Fawwaz Tayssir, and Michel M Maharbiz. 2013. \emph{Circuit
+Analysis and Design}. 2nd Edition. NTS Press.
+
+\end{CSLReferences}
+
+
+\backmatter
+
+
+\end{document}
