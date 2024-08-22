@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis and Design of Elementary MOS Amplifier Stages</title>
+<title>COCOA: Collaborative Compendium on Analog Integrated Circuits</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./contents/contributors.html" rel="next">
-<link href="./favicon.png" rel="icon" type="image/png">
+<link href="./contents/conventions.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,21 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
-</script>
-<script src="./scripts/welcome/confetti.js" defer=""></script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
-<script src="./scripts/ai_menu/dist/bundle.js" defer=""></script>
-<script src="./scripts/ai_menu/dist/142.bundle.js" defer=""></script>
-<script src="./scripts/ai_menu/dist/384.bundle.js" defer=""></script>
-<script src="./scripts/ai_menu/dist/761.bundle.js" defer=""></script>
 
 
 </head>
@@ -95,12 +79,12 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Analysis and Design of Elementary MOS Amplifier Stages</span>
+    <span class="navbar-title">COCOA: Collaborative Compendium on Analog Integrated Circuits</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="https://github.com/harvard-edge/cs249r_book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Analysis-and-Design-of-Elementary-MOS-Amplifier-Stages.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./COCOA--Collaborative-Compendium-on-Analog-Integrated-Circuits.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -132,7 +116,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">FRONT MATTER</a></li><li class="breadcrumb-item"><a href="./index.html">Acknowledgements</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">FRONT MATTER</a></li><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,19 +149,13 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Acknowledgements</span></a>
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contents/contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./contents/copyright.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Acknowledgements and License Information</span></a>
+  <a href="./contents/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions Used in this Book</span></a>
   </div>
 </li>
       </ul>
@@ -186,7 +164,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">MAIN</span></a>
+ <span class="menu-text">PART I</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -198,32 +176,9 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./contents/chapter2/chapter2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transfer Characteristic of the Common-Source Voltage Amplifier</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">REFERENCES</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -234,17 +189,19 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link active" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#why-we-wrote-this-book" id="toc-why-we-wrote-this-book" class="nav-link" data-scroll-target="#why-we-wrote-this-book">Why We Wrote This Book</a></li>
+  <li><a href="#book-conventions" id="toc-book-conventions" class="nav-link" data-scroll-target="#book-conventions">Book Conventions</a></li>
+  <li><a href="#get-in-touch" id="toc-get-in-touch" class="nav-link" data-scroll-target="#get-in-touch">Get in Touch</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/harvard-edge/cs249r_book/edit/dev/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/blob/dev/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits/edit/dev/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits/blob/dev/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">FRONT MATTER</a></li><li class="breadcrumb-item"><a href="./index.html">Acknowledgements</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">FRONT MATTER</a></li><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Analysis and Design of Elementary MOS Amplifier Stages</h1>
-<p class="subtitle lead">The Modular Series of Microelectronic Device &amp; Circuit Design</p>
+<h1 class="title">COCOA: Collaborative Compendium on Analog Integrated Circuits</h1>
 </div>
 
 
@@ -256,21 +213,27 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
     
   </div>
   
-<div>
-  <div class="abstract">
-    <div class="block-title">Abstract</div>
-    Analog integrated circuit (IC) design is often viewed as a “black art,” accessible only to those with special talent or years of experience. As an attempt to disprove this stereotype, this book was written to provide a customized introduction for the beginner with a minimum amount of prerequisite knowledge. Specifically, the material is positioned to fill the gap between general introductions on analog circuits, which are usually centered on discrete (printed circuit board) components, and advanced graduate books on integrated circuits. The need for filling the gap between these two types of texts has become stronger over the past decades for several reasons. The first is that advanced material has become less accessible for the inexperienced learner due to the growing complexity associated with the state of the art. A second reason is that today’s typical intro course sequence has been expanded to include embedded system design; this leaves very little time to cover analog circuit principles at a level that is required for advanced study. There are multiple usage scenarios for this book. The material can be taught following an introduction to analog circuits in the junior or senior year of undergraduate study. In addition, the text can be used to prepare incoming graduate students for an advanced course sequence in analog IC design. Lastly, we believe that the book will be valuable for engineers that are pursuing a career change toward analog ICs, but do not possess the prerequisites to follow advanced literature. The reader of this module is expected to be familiar with the basic concepts of linear circuit analysis, including Kirchhoff’s laws and the frequency response analysis of passive networks. We also assume familiarity with basic solid-state physics and electrostatics. Since the study of analog circuits is strongly coupled to semiconductor device physics and linear system theory, it has and will always be difficult to teach this subject from the ground up, without causing too many distractions and challenges that are related to the required tool set, rather than the core principles themselves. This book follows a “just-in-time” treatment of semiconductor device modeling aspects to alleviate this problem. Instead of covering all of the detailed device physics in one isolated chapter, we begin with the simplest possible model, and augment this model only where needed to resolve new questions that arise as we learn more about circuits. This approach eases the device physics overhead and gives the reader a chance to internalize the transistor models from a well-motivated basis.
-  </div>
-</div>
 
 
 </header>
 
 
-
-<section id="acknowledgements" class="level1 unnumbered">
-<h1 class="unnumbered">Acknowledgements</h1><p><embed src="cover-image.pdf" title="Analysis and Design of Elementary MOS Amplifier Stages" class="quarto-cover-image img-fluid" alt="Cover image."></p>
-<p>I would like to thank Charlie Sodini and Roger Howe for establishing this book series and for their help during the creation of this module. Special thanks go to my loving wife Yukiko, who patiently supported me during the preparation of this book.</p>
+<section id="preface" class="level1 unnumbered">
+<h1 class="unnumbered">Preface</h1>
+<p>Welcome to COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits.</p>
+<p>We aim to make this open-source book a collaborative effort that brings together insights from students, professionals, and the broader community of analog circuit designers.</p>
+</section>
+<section id="why-we-wrote-this-book" class="level1">
+<h1>Why We Wrote This Book</h1>
+<p>We’re in an age where technology is always evolving. Open collaboration and sharing knowledge are the building blocks of true innovation. That’s the spirit behind this effort. We go beyond the traditional textbook model to create a living knowledge hub, so that we can all share and learn from one another.</p>
+</section>
+<section id="book-conventions" class="level1">
+<h1>Book Conventions</h1>
+<p>For details on the conventions used in this book, check out the <a href="./contents/conventions.html">Conventions</a> section.</p>
+</section>
+<section id="get-in-touch" class="level1">
+<h1>Get in Touch</h1>
+<p>Do you have questions or feedback? Feel free to <a href="mailto:bmurmann@hawaii.edu?subject=“COCOA”">e-mail Boris Murmann</a> directly, or you are welcome to start a discussion thread on GitHub.</p>
 
 
 </section>
@@ -796,8 +759,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./contents/contributors.html" class="pagination-link" aria-label="Contributors">
-        <span class="nav-page-text">Contributors</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./contents/conventions.html" class="pagination-link" aria-label="Conventions Used in this Book">
+        <span class="nav-page-text">Conventions Used in this Book</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -805,11 +768,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Written, edited and curated by Prof.&nbsp;Boris Murmann</p>
+<p>Curated by Boris Murmann</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/harvard-edge/cs249r_book/edit/dev/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/harvard-edge/cs249r_book/blob/dev/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits/edit/dev/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits/blob/dev/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

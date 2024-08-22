@@ -791,8 +791,7 @@ A_{i, Exact}' = \frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} =
 \frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
 $$
 
-The discrepancy factor between the two results is
-given by
+The discrepancy factor between the two results is given by
 
 $$
 \frac{A_{i, Two-Port}'}{A_{i, Exact}'} = \frac{R_2 + R_S + g_m R_2 R_S}{R_L + R_2 + R_S + g_m R_2 R_S} = \frac{1 + R_S \Bigl(\frac{1}{R_2} + g_m}{1 + \frac{R_L}{R_2} + R_S \Bigl(\frac{1}{R_2} + g_m \Bigr)}

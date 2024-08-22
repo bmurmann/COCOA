@@ -1,6 +1,7 @@
 email:
   contact: bmurmann@hawaii.edu
   subject: [COCOA]
+  info: mailto:bmurmann@hawaii.edu?subject="COCOA"
 
 title: 
   long: "COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits"

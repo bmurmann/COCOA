@@ -13,15 +13,15 @@ project:
     - "contents/*/*/*/*/*.qmd" # contents/labs/<vendor>/<board>/<exercises>/*.qmd
 
 book:
-  google-analytics:
-    tracking-id: "G-M21L0CBCVN"
-    anonymize-ip: true
-    version: 4
+#  google-analytics:
+#    tracking-id: ""
+#    anonymize-ip: true
+#    version: 4
     
-  comments: 
-    hypothesis:
-      theme: clean
-      openSidebar: true
+#  comments: 
+#    hypothesis:
+#      theme: clean
+#      openSidebar: true
 
   search:
     keyboard-shortcut: ["~", "/"]
@@ -32,9 +32,9 @@ book:
     collapse: true
     back-to-top-navigation: true
 
-  favicon: favicon.png
-  cover-image: cover-image.pdf
-  cover-image-alt: "Cover image."
+  #favicon: favicon.png
+  #cover-image: cover-image.pdf
+  #cover-image-alt: "Cover image."
 
   bread-crumbs: true
 
@@ -45,15 +45,11 @@ book:
     search: true
 
   page-navigation: true
-  title: "Analysis and Design of Elementary MOS Amplifier Stages"
-  subtitle: "The Modular Series of Microelectronic Device & Circuit Design"
-  abstract: "Analog integrated circuit (IC) design is often viewed as a “black art,” accessible only to those with special talent or years of experience. As an attempt to disprove this stereotype, this book was written to provide a customized introduction for the beginner with a minimum amount of prerequisite knowledge. Specifically, the material is positioned to fill the gap between general introductions on analog circuits, which are usually centered on discrete (printed circuit board) components, and advanced graduate books on integrated circuits. The need for filling the gap between these two types of texts has become stronger over the past decades for several reasons. The first is that advanced material has become less accessible for the inexperienced learner due to the growing complexity associated with the state of the art. A second reason is that today’s typical intro course sequence has been expanded to include embedded system design; this leaves very little time to cover analog circuit principles at a level that is required for advanced study.
-\n
-There are multiple usage scenarios for this book. The material can be taught following an introduction to analog circuits in the junior or senior year of undergraduate study. In addition, the text can be used to prepare incoming graduate students for an advanced course sequence in analog IC design. Lastly, we believe that the book will be valuable for engineers that are pursuing a career change toward analog ICs, but do not possess the prerequisites to follow advanced literature. The reader of this module is expected to be familiar with the basic concepts of linear circuit analysis, including Kirchhoff’s laws and the frequency response analysis of passive networks. We also assume familiarity with basic solid-state physics and electrostatics.
-\n
-Since the study of analog circuits is strongly coupled to semiconductor device physics and linear system theory, it has and will always be difficult to teach this subject from the ground up, without causing too many distractions and challenges that are related to the required tool set, rather than the core principles themselves. This book follows a “just-in-time” treatment of semiconductor device modeling aspects to alleviate this problem. Instead of covering all of the detailed device physics in one isolated chapter, we begin with the simplest possible model, and augment this model only where needed to resolve new questions that arise as we learn more about circuits. This approach eases the device physics overhead and gives the reader a chance to internalize the transistor models from a well-motivated basis."
+  title: "COCOA: Collaborative Compendium on Analog Integrated Circuits"
+  subtitle: ""
+  abstract: ""
 
-  repo-url: https://github.com/harvard-edge/cs249r_book
+  repo-url: https://github.com/bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits
   repo-branch: dev
   repo-actions: [edit, issue, source]
   downloads: [pdf]
@@ -61,7 +57,7 @@ Since the study of analog circuits is strongly coupled to semiconductor device p
   reader-mode: true
   page-footer:
     left: |
-      Written, edited and curated by Prof. Boris Murmann
+      Curated by Boris Murmann
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 
@@ -70,34 +66,26 @@ Since the study of analog circuits is strongly coupled to semiconductor device p
     - part: FRONT MATTER
       chapters:
       - index.qmd
-      - contents/contributors.qmd
-      - contents/copyright.qmd
+      - contents/conventions.qmd
     - text: "---"
-    - part: MAIN
+    - part: PART I
       chapters:
       - contents/chapter1/introduction.qmd
-      - contents/chapter2/chapter2.qmd
     - text: "---"  
-    # REFERENCES
-    - part: REFERENCES
-      chapters: 
-        - references.qmd
 
 citation: true
 
-license: CC-BY-NC-SA
+license: CC-BY
 
 filters:
   - custom_callout.lua
 
 bibliography: 
-  # main
   - contents/chapter1/introduction.bib
-  - contents/chapter2/chapter2.bib
 
-comments:
-  giscus:
-    repo: harvard-edge/cs249r_book
+#comments:
+#  giscus:
+#    repo: bmurmann/COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits
 
 format:
   html:
@@ -130,14 +118,13 @@ format:
     number-depth: 3
     toc: true
     toc-depth: 4	
-    include-in-header:
-      text: | 
-        <script src="/scripts/welcome/confetti.js" defer></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
-        <script src="/scripts/ai_menu/dist/bundle.js" defer></script>
-        <script src="/scripts/ai_menu/dist/142.bundle.js" defer></script>
-        <script src="/scripts/ai_menu/dist/384.bundle.js" defer></script>
-        <script src="/scripts/ai_menu/dist/761.bundle.js" defer></script>
+    #include-in-header:
+    #  text: | 
+    #    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
+    #    <script src="/scripts/ai_menu/dist/bundle.js" defer></script>
+    #    <script src="/scripts/ai_menu/dist/142.bundle.js" defer></script>
+    #    <script src="/scripts/ai_menu/dist/384.bundle.js" defer></script>
+    #    <script src="/scripts/ai_menu/dist/761.bundle.js" defer></script>
         
     citeproc: true
 
@@ -199,7 +186,7 @@ format:
           {{\Huge\bfseries Analysis and Design of Elementary MOS Amplifier Stages}\\[1em] \Large The Modular Series of Microelectronic Device \& Circuit Design\par}
 
           \vspace*{\fill}
-            {\large Written, edited and curated by \\[.2cm] Prof. Boris Murmann \\[.2cm] University of Hawaii \\[1em] \normalsize {\itshape With special thanks to the community for their contributions and support.} \\[1em] \pagebreak \vfill \scriptsize Last Modified: \today\par \vfill}
+            {\large Curated by \\[.2cm] Prof. Boris Murmann \\[.2cm] University of Hawaii \\[1em] \normalsize {\itshape With special thanks to the community for their contributions and support.} \\[1em] \pagebreak \vfill \scriptsize Last Modified: \today\par \vfill}
           \vspace*{\fill}
 
           \end{titlepage}
