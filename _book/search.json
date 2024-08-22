@@ -75,27 +75,5 @@
       "PART I",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "COCOA: Collaborative Compendium on Analog Integrated Circuits",
-    "section": "",
-    "text": "Preface\nWelcome to COCOA-Collaborative-Compendium-on-Analog-Integrated-Circuits.\nWe aim to make this open-source book a collaborative effort that brings together insights from students, professionals, and the broader community of analog circuit designers.\n\n\nWhy We Wrote This Book\nWe’re in an age where technology is always evolving. Open collaboration and sharing knowledge are the building blocks of true innovation. That’s the spirit behind this effort. We go beyond the traditional textbook model to create a living knowledge hub, so that we can all share and learn from one another.\n\n\nBook Conventions\nFor details on the conventions used in this book, check out the Conventions section.\n\n\nGet in Touch\nDo you have questions or feedback? Feel free to e-mail Boris Murmann directly, or you are welcome to start a discussion thread on GitHub.",
-    "crumbs": [
-      "FRONT MATTER",
-      "Preface"
-    ]
-  },
-  {
-    "objectID": "contents/conventions.html",
-    "href": "contents/conventions.html",
-    "title": "Conventions Used in this Book",
-    "section": "",
-    "text": "Please follow these conventions as you contribute to this online book:\n\nClear Structure and Organization:\n\nChapter Outlines: Begin each chapter with an outline that provides an overview of the topics covered.\nSequential Numbering: Utilize sequential numbering for chapters, sections, and subsections to facilitate easy reference.\n\nAccessible Language:\n\nGlossary: Include a glossary that defines technical terms and jargon.\nConsistent Terminology: Maintain consistent use of terminology throughout the book to avoid confusion.\n\nLearning Aids:\n\nDiagrams and Figures: Employ diagrams, figures, and tables to visually convey complex concepts.\nSidebars: Use sidebars for additional information, anecdotes, or to provide real-world context to the theoretical content.\n\nInteractive Elements:\n\nColabs and Projects: Integrate exercises and projects at the end of each chapter to encourage active learning and practical application of concepts.\nCase Studies: Incorporate case studies to provide a deeper understanding of how principles are applied in real-world situations.\n\nReferences and Further Reading:\n\nBibliography: Include a bibliography at the end of each chapter for readers who wish to delve deeper into specific topics.\nCitations: Maintain a consistent style for citations, adhering to recognized academic standards like APA, MLA, or Chicago.\n\nSupporting Materials:\n\nSupplementary Online Resources: Provide links to supplementary online resources, such as video lectures, webinars, or interactive modules.\nDatasets and Code Repositories: Share datasets and code repositories for hands-on practice, particularly for sections dealing with algorithms and applications.\n\nFeedback and Community Engagement:\n\nForums and Discussion Groups: Establish forums or discussion groups where readers can interact, ask questions, and share knowledge.\nOpen Review Process: Implement an open review process, inviting feedback from the community to continuously improve the content.\n\nInclusivity and Accessibility:\n\nInclusive Language: Utilize inclusive language that respects diversity and promotes equality.\nAccessible Formats: Ensure the textbook is available in accessible formats, including audio and Braille, to cater to readers with disabilities.\n\nIndex:\n\nComprehensive Index: Include a comprehensive index at the end of the book to help readers quickly locate specific information.\n\n\nImplementing these conventions can contribute to creating a textbook that is comprehensive, accessible, and conducive to effective learning.",
-    "crumbs": [
-      "FRONT MATTER",
-      "Conventions Used in this Book"
-    ]
   }
 ]
