@@ -2,17 +2,17 @@
 
 This open-source book is meant to be a collaborative effort, bringing together insights from students, professionals, and the broader community of analog integrated circuit designers. It will leverage the new possibilities associated with open-source process design kits (PDKs) and open-source chip design software to build up a knowledge base with reproducible examples in a "live and dynamic" online format.
 
-As of its intial creation in August 2024, it is merely a skeleton with the following stucture. 
+As of its initial creation in August 2024, it is merely a skeleton with the following structure. 
 
 * Part I: Learn to crawl &mdash; Square-law transistors, biasing and small-signal analysis
 * Part II: Learn to walk &mdash; Real transistors, noise, mismatch, and distortion
 * Part III: Dare to run &mdash; Knowledge base for state-of-the-art circuits
 
-Part I is dedicated to learning about powerful abstractions that are neccesary to analyze and design analog integrated circuits. This initial exposure is driven with the simplest possible transistor models so that we can focus on fully understanding these abstractions and don't get distracted by second-order effects that will only become meaningful later on. An added and important side benefit is that we can perfectly match hand calculations and simulations, which not only validates our methods, but also abandons the widespread misconception that circuit simulators rely on some form of "magic" to produce their outputs.
+Part I is dedicated to learning about powerful abstractions that are necessary to analyze and design analog integrated circuits. This initial exposure is driven with the simplest possible transistor models so that we can focus on fully understanding these abstractions and don't get distracted by second-order effects that will only become meaningful later on. An added and important side benefit is that we can perfectly match hand calculations and simulations, which not only validates our methods, but also abandons the widespread misconception that circuit simulators rely on some form of "magic" to produce their outputs.
 
-Part II turns expands our horizon to analog circuits with modern transistors, which usually do not obey square-law equations. The good news is that all major abstractions, analysis and design approaches still apply. We just need to abandon the idea of predicting the transistor characteristics with simple equations, and instead rely on lookup tables or advanced model expressions (e.g., EKV-based). Additionally, this is a good time in the overall learning process for dealing with the major pain points of analog design: noise, mismatch and distortion. We review these impairments for the most important circuit primitives, forming a scalable basis for undertanding larger circuits. 
+Part II turns expands our horizon to analog circuits with modern transistors, which usually do not obey square-law equations. The good news is that all major abstractions, analysis and design approaches still apply. We just need to abandon the idea of predicting the transistor characteristics with simple equations, and instead rely on lookup tables or advanced model expressions (e.g., EKV-based). Additionally, this is a good time in the overall learning process for dealing with the major pain points of analog design: noise, mismatch and distortion. We review these impairments for the most important circuit primitives, forming a scalable basis for understanding larger circuits. 
 
-Part III is meant to capture "deep dives" on commonly used circuits. It will be a forum where you can learn, for example, about the "best" way of going about the design of a bandgap reference, an LC voltage-controlled oscillator, or a successive approximation ADC. This part will undoubtedly be in constat flux and ideally thrive on pointers to reproducible open-source design repositories, simulation data, layouts, etc.
+Part III is meant to capture "deep dives" on commonly used circuits. It will be a forum where you can learn, for example, about the "best" way of going about the design of a bandgap reference, an LC voltage-controlled oscillator, or a successive approximation ADC. This part will undoubtedly be in constant flux and ideally thrive on pointers to reproducible open-source design repositories, simulation data, layouts, etc.
 
 ## Acknowledgements
 

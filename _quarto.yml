@@ -56,11 +56,20 @@ book:
   chapters:
     - index.qmd
     - contents/contributors.qmd
+    - contents/copyright.qmd
     - contents/conventions.qmd
     - text: "---"
     - part: Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis
       chapters:
-      - contents/chapter1/introduction.qmd
+      - contents/partI/partI.1.qmd
+    - text: "---"
+    - part: Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion
+      chapters:
+      - contents/partII/partII.1.qmd
+      - text: "---"
+    - part: Dare to Run — Knowledge Base for State-of-the-Art Circuits
+      chapters:
+      - contents/partIII/partIII.1.qmd
     - text: "---"  
     - part: References
       chapters: 
@@ -76,7 +85,7 @@ editor:
   render-on-save: true
 
 bibliography: 
-  - contents/chapter1/introduction.bib
+  - contents/partI/partI.1.bib
 
 #comments:
 #  giscus:
