@@ -1,4 +1,4 @@
-# Conventions Used in this Book {.unnumbered}
+# Conventions {.unnumbered}
 
 Please follow these conventions as you contribute to this online book:
 

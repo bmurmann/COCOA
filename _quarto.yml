@@ -54,21 +54,27 @@ book:
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 
   chapters:
+    - index.qmd
+    - contents/contributors.qmd
+    - contents/conventions.qmd
     - text: "---"
-    - part: FRONT MATTER
-      chapters:
-      - index.qmd
-      - contents/conventions.qmd
-    - text: "---"
-    - part: PART I
+    - part: Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis
       chapters:
       - contents/chapter1/introduction.qmd
     - text: "---"  
+    - part: References
+      chapters: 
+        - references.qmd
+    - text: "---"  
+
 
 citation: true
 license: CC-BY
 filters:
   - custom_callout.lua
+editor:
+  render-on-save: true
+
 bibliography: 
   - contents/chapter1/introduction.bib
 
@@ -211,25 +217,22 @@ format:
     #         \clearpage
     #     }
         
-crossref:
-  appendix-title: "Appendix"
-  appendix-delim: ":"
+# crossref:
+#   appendix-title: "Appendix"
+#   appendix-delim: ":"
 
-  custom:
-    - kind: float
-      reference-prefix: Lab
-      key: labq
-      latex-env: lab
+#   custom:
+#     - kind: float
+#       reference-prefix: Lab
+#       key: labq
+#       latex-env: lab
 
-    - kind: float
-      reference-prefix: Exercise
-      key: exr
-      latex-env: exr
+#     - kind: float
+#       reference-prefix: Exercise
+#       key: exr
+#       latex-env: exr
 
-    - kind: float
-      reference-prefix: Video
-      key: vid
-      latex-env: vid
-
-editor:
-  render-on-save: true
+#     - kind: float
+#       reference-prefix: Video
+#       key: vid
+#       latex-env: vid

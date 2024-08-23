@@ -1,17 +1,31 @@
 # Preface {.unnumbered}
 
-Welcome to {{< var title.long >}}.
+This open-source book is meant to be a collaborative effort, bringing together insights from students, professionals, and the broader community of analog integrated circuit designers. It will leverage the new possibilities associated with open-source process design kits (PDKs) and open-source chip design software to build up a knowledge base with reproducible examples in a "live and dynamic" online format.
 
-We aim to make this open-source book a collaborative effort that brings together insights from students, professionals, and the broader community of analog circuit designers.
+As of its intial creation in August 2024, it is merely a skeleton with the following stucture. 
 
-# Why We Wrote This Book
+* Part I: Learn to crawl &mdash; Square-law transistors, biasing and small-signal analysis
+* Part II: Learn to walk &mdash; Real transistors, noise, mismatch, and distortion
+* Part III: Dare to run &mdash; Knowledge base for state-of-the-art circuits
 
-We're in an age where technology is always evolving. Open collaboration and sharing knowledge are the building blocks of true innovation. That's the spirit behind this effort. We go beyond the traditional textbook model to create a living knowledge hub, so that we can all share and learn from one another.
+Part I is dedicated to learning about powerful abstractions that are neccesary to analyze and design analog integrated circuits. This initial exposure is driven with the simplest possible transistor models so that we can focus on fully understanding these abstractions and don't get distracted by second-order effects that will only become meaningful later on. An added and important side benefit is that we can perfectly match hand calculations and simulations, which not only validates our methods, but also abandons the widespread misconception that circuit simulators rely on some form of "magic" to produce their outputs.
 
-# Book Conventions
+Part II turns expands our horizon to analog circuits with modern transistors, which usually do not obey square-law equations. The good news is that all major abstractions, analysis and design approaches still apply. We just need to abandon the idea of predicting the transistor characteristics with simple equations, and instead rely on lookup tables or advanced model expressions (e.g., EKV-based). Additionally, this is a good time in the overall learning process for dealing with the major pain points of analog design: noise, mismatch and distortion. We review these impairments for the most important circuit primitives, forming a scalable basis for undertanding larger circuits. 
 
-For details on the conventions used in this book, check out the [Conventions](./contents/conventions.qmd) section.
+Part III is meant to capture "deep dives" on commonly used circuits. It will be a forum where you can learn, for example, about the "best" way of going about the design of a bandgap reference, an LC voltage-controlled oscillator, or a successive approximation ADC. This part will undoubtedly be in constat flux and ideally thrive on pointers to reproducible open-source design repositories, simulation data, layouts, etc.
 
-# Get in Touch
+## Contact
 
-Do you have questions or feedback? Feel free to [e-mail Boris Murmann]({{< var email.info >}}) directly, or you are welcome to start a discussion thread on GitHub.
+Do you have questions or feedback? Feel free to [email]({{< var email.info >}}) Boris Murmann.
+
+## Acknowledgements
+
+This project was inspired by Vijay Janapa Reddi's [CS249R Book](https://github.com/harvard-edge/cs249r_book/tree/dev) and borrows from its implementation. Special thanks to James T. Meech for getting this work off the ground (by porting Chapter 1 of Part I to Quarto).
+
+## Copyright
+
+Unless otherwise stated, this work is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). You can find the full text of the license [here](http://creativecommons.org/licenses/by/4.0/)
+
+Contributors to this project have dedicated their contributions to the public domain or under the same open license as the original project. While the contributions are collaborative, each contributor retains the copyright for their respective contributions. All trademarks and registered trademarks mentioned in this book are the property of their respective owners.
+
+The information provided in this book is believed to be accurate and reliable. However, the authors, editors, and publishers cannot be held liable for any damages caused or alleged to be caused either directly or indirectly by the information contained in this book.
