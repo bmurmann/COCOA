@@ -13,11 +13,3 @@ Part I is dedicated to learning about powerful abstractions that are necessary t
 Part II turns expands our horizon to analog circuits with modern transistors, which usually do not obey square-law equations. The good news is that all major abstractions, analysis and design approaches still apply. We just need to abandon the idea of predicting the transistor characteristics with simple equations, and instead rely on lookup tables or advanced model expressions (e.g., EKV-based). Additionally, this is a good time in the overall learning process for dealing with the major pain points of analog design: noise, mismatch and distortion. We review these impairments for the most important circuit primitives, forming a scalable basis for understanding larger circuits. 
 
 Part III is meant to capture "deep dives" on commonly used circuits. It will be a forum where you can learn, for example, about the "best" way of going about the design of a bandgap reference, an LC voltage-controlled oscillator, or a successive approximation ADC. This part will undoubtedly be in constant flux and ideally thrive on pointers to reproducible open-source design repositories, simulation data, layouts, etc.
-
-## Acknowledgements
-
-This project was inspired by Vijay Janapa Reddi's [CS249R Book](https://github.com/harvard-edge/cs249r_book/tree/dev) and borrows from its implementation. Special thanks to James T. Meech for getting this work off the ground (by porting Chapter 1 of Part I to Quarto).
-
-## Contact
-
-Do you have questions or feedback? Feel free to [email]({{< var email.info >}}) Boris Murmann.

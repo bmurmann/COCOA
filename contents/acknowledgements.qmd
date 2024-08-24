@@ -1,0 +1,4 @@
+
+# Acknowledgements {.unnumbered}
+
+This project was inspired by Vijay Janapa Reddi's [CS249R Book](https://github.com/harvard-edge/cs249r_book/tree/dev) and borrows from its implementation. Special thanks to James T. Meech for getting this work off the ground (by porting Chapter 1 of Part I to Quarto).
