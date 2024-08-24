@@ -8,7 +8,7 @@ As of its initial creation in August 2024, it is merely a skeleton with the foll
 * Part II: Learn to walk &mdash; Real transistors, noise, mismatch, and distortion
 * Part III: Dare to run &mdash; Knowledge base for state-of-the-art circuits
 
-[Read an fully rendered version of this book online.](https://bmurmann.github.io/COCOA/)
+[Read the fully rendered version of this book online.](https://bmurmann.github.io/COCOA/)
 
 ## Acknowledgements
 

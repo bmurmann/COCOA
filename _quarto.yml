@@ -55,6 +55,7 @@ book:
 
   chapters:
     - index.qmd
+    - contents/acknowledgements.qmd
     - contents/contributors.qmd
     - contents/copyright.qmd
     - contents/conventions.qmd
